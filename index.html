@@ -13,20 +13,25 @@
     :root {
       --bg: #f8fafc;
       --surface: #ffffff;
-      --surface-glass: rgba(255, 255, 255, 0.85);
+      --surface-glass: rgba(255, 255, 255, 0.88);
       --border: #e2e8f0;
       --border-accent: #cbd5e1;
       --text: #090d16;
       --text-muted: #52617a;
-      --brand: #0284c7;
-      --brand-dark: #0369a1;
-      --brand-glow: rgba(2, 132, 199, 0.15);
+      
+      /* Palette Schneider Electric */
+      --schneider: #00B33C;
+      --schneider-dark: #00872e;
+      --schneider-subtle: rgba(0, 179, 60, 0.08);
+      --schneider-border: rgba(0, 179, 60, 0.25);
+      --schneider-glow: rgba(0, 179, 60, 0.2);
+
       --navy: #0f172a;
       --pill-bg: #f1f5f9;
       --pill-text: #334155;
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 12px 24px -6px rgba(15, 23, 42, 0.06), 0 4px 8px -4px rgba(15, 23, 42, 0.03);
-      --shadow-lg: 0 20px 35px -10px rgba(15, 23, 42, 0.08);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 12px 28px -6px rgba(15, 23, 42, 0.07);
+      --shadow-lg: 0 20px 35px -10px rgba(15, 23, 42, 0.1);
     }
 
     * {
@@ -35,71 +40,56 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.65;
-      position: relative;
-      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       -webkit-font-smoothing: antialiased;
+      position: relative;
     }
 
-    /* Ambient Technical Blueprint Grid */
-    .bg-grid-pattern {
+    /* Grille technique d'arrière-plan */
+    .bg-grid {
       position: fixed;
       inset: 0;
       background-image: 
-        linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
-      background-size: 32px 32px;
+        linear-gradient(to right, rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+      background-size: 36px 36px;
       pointer-events: none;
       z-index: -2;
     }
 
-    /* Gradient Ambient Orbs to Break the White Space */
-    .ambient-glow-1 {
+    /* Halo lumineux vert Schneider */
+    .ambient-halo {
       position: fixed;
-      top: -120px;
+      top: -100px;
       left: 50%;
       transform: translateX(-50%);
-      width: 750px;
-      height: 420px;
-      background: radial-gradient(ellipse at center, rgba(14, 165, 233, 0.12), rgba(99, 102, 241, 0.06), transparent 70%);
-      filter: blur(60px);
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .ambient-glow-2 {
-      position: fixed;
-      bottom: 10%;
-      right: -100px;
-      width: 500px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.07), transparent 70%);
+      width: 700px;
+      height: 380px;
+      background: radial-gradient(ellipse at center, var(--schneider-subtle), transparent 70%);
       filter: blur(80px);
       pointer-events: none;
       z-index: -1;
     }
 
-    /* Sticky Navigation */
+    /* Barre de navigation haute */
     header.site-header {
       position: sticky;
       top: 0;
       background: var(--surface-glass);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
       z-index: 1000;
     }
 
     .nav-inner {
-      max-width: 820px;
+      max-width: 860px;
       margin: 0 auto;
       padding: 14px 24px;
       display: flex;
@@ -114,13 +104,13 @@
       text-decoration: none;
       color: var(--text);
       font-weight: 800;
-      font-size: 1.05rem;
-      letter-spacing: -0.02em;
+      font-size: 1rem;
+      cursor: pointer;
     }
 
     .brand-avatar-mini {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       background: var(--navy);
       color: #fff;
@@ -129,40 +119,56 @@
       justify-content: center;
       font-size: 0.75rem;
       font-weight: 700;
-      border: 2px solid #ffffff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border: 2px solid var(--schneider);
     }
 
-    /* Dropdown Component */
+    /* Liens directs de navigation (desktop) */
+    .desktop-nav {
+      display: flex;
+      gap: 6px;
+      list-style: none;
+    }
+
+    .nav-tab-btn {
+      background: transparent;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .nav-tab-btn:hover {
+      color: var(--text);
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .nav-tab-btn.active {
+      color: var(--schneider-dark);
+      background: var(--schneider-subtle);
+    }
+
+    /* Menu déroulant (mobile & appoint) */
     .dropdown {
       position: relative;
     }
 
     .dropdown-trigger {
-      display: inline-flex;
+      display: none;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: var(--surface);
       border: 1px solid var(--border);
-      padding: 7px 16px;
+      padding: 6px 14px;
       border-radius: 999px;
       font-size: 0.85rem;
       font-weight: 600;
       color: var(--text);
       cursor: pointer;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.15s ease;
-    }
-
-    .dropdown-trigger:hover {
-      border-color: var(--brand);
-      box-shadow: 0 0 0 3px var(--brand-glow);
-    }
-
-    .dropdown-arrow {
-      font-size: 0.65rem;
-      color: var(--text-muted);
-      transition: transform 0.2s ease;
     }
 
     .dropdown-menu {
@@ -172,9 +178,9 @@
       top: calc(100% + 8px);
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      min-width: 190px;
-      padding: 8px;
+      border-radius: 12px;
+      min-width: 180px;
+      padding: 6px;
       list-style: none;
       box-shadow: var(--shadow-lg);
       z-index: 1100;
@@ -182,77 +188,85 @@
 
     .dropdown-menu.active {
       display: block;
-      animation: menuFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    @keyframes menuFadeIn {
-      from { opacity: 0; transform: translateY(-8px); }
+    .dropdown-menu button {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .dropdown-menu button:hover,
+    .dropdown-menu button.active {
+      background: var(--schneider-subtle);
+      color: var(--schneider-dark);
+    }
+
+    /* Conteneur principal */
+    main.main-wrapper {
+      max-width: 860px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+      flex: 1;
+    }
+
+    /* Gestion des vues par onglets (Pages invisibles au scroll) */
+    .view-panel {
+      display: none;
+      animation: viewFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .view-panel.active {
+      display: block;
+    }
+
+    @keyframes viewFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .dropdown-menu li a {
-      display: flex;
-      align-items: center;
-      padding: 10px 14px;
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 600;
-      border-radius: 8px;
-      transition: all 0.15s ease;
-    }
-
-    .dropdown-menu li a:hover {
-      color: var(--brand-dark);
-      background-color: var(--pill-bg);
-    }
-
-    /* Layout Wrapper */
-    .main-wrapper {
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 50px 24px 100px;
-    }
-
-    /* HERO SECTION */
-    .hero {
-      margin-bottom: 70px;
-    }
-
-    .badge-status {
+    /* VUE 1 : GRANDE PAGE DE PRÉSENTATION */
+    .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 6px 14px;
       background: #ffffff;
-      border: 1px solid #bfdbfe;
+      border: 1px solid var(--schneider-border);
       border-radius: 999px;
-      color: var(--brand-dark);
+      color: var(--schneider-dark);
       font-size: 0.825rem;
       font-weight: 600;
-      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.08);
       margin-bottom: 24px;
     }
 
     .status-dot {
       width: 8px;
       height: 8px;
-      background-color: #10b981;
+      background-color: var(--schneider);
       border-radius: 50%;
-      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+      box-shadow: 0 0 0 3px var(--schneider-glow);
     }
 
     .hero-card {
       background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 100%);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 36px 36px 32px;
+      padding: 40px;
       box-shadow: var(--shadow-md);
       position: relative;
-      overflow: hidden;
+      margin-bottom: 32px;
     }
 
-    /* Engineering Accent Stripe */
     .hero-card::before {
       content: "";
       position: absolute;
@@ -260,7 +274,8 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(90deg, #0284c7, #6366f1, #10b981);
+      background: linear-gradient(90deg, var(--schneider), #059669, #0284c7);
+      border-radius: 20px 20px 0 0;
     }
 
     .hero-header {
@@ -272,7 +287,7 @@
     }
 
     .hero-titles h1 {
-      font-size: 2.5rem;
+      font-size: 2.6rem;
       font-weight: 800;
       letter-spacing: -0.035em;
       line-height: 1.15;
@@ -281,26 +296,25 @@
     }
 
     .hero-titles .subtitle {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 600;
-      color: var(--brand-dark);
-      letter-spacing: -0.01em;
+      color: var(--schneider-dark);
     }
 
     .hero-titles .institution {
       font-size: 0.95rem;
       color: var(--text-muted);
       font-weight: 500;
-      margin-top: 2px;
+      margin-top: 4px;
     }
 
     .avatar-frame {
-      width: 104px;
-      height: 104px;
-      border-radius: 20px;
+      width: 110px;
+      height: 110px;
+      border-radius: 24px;
       background: #f1f5f9;
       border: 2px solid #ffffff;
-      box-shadow: 0 6px 16px -2px rgba(15, 23, 42, 0.12);
+      box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.12);
       flex-shrink: 0;
       overflow: hidden;
       display: flex;
@@ -308,7 +322,7 @@
       justify-content: center;
       font-weight: 800;
       color: var(--text-muted);
-      font-size: 1.5rem;
+      font-size: 1.6rem;
     }
 
     .avatar-frame img {
@@ -324,7 +338,6 @@
       margin-bottom: 28px;
     }
 
-    /* Key Metrics Stripe */
     .metrics-bar {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -333,7 +346,7 @@
       background: var(--pill-bg);
       border-radius: 12px;
       border: 1px solid var(--border);
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
 
     .metric-item {
@@ -342,7 +355,7 @@
 
     .metric-value {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--navy);
     }
@@ -352,10 +365,9 @@
       font-weight: 600;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
     }
 
-    /* Buttons */
     .hero-actions {
       display: flex;
       gap: 12px;
@@ -366,97 +378,178 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 18px;
+      padding: 11px 20px;
       border-radius: 10px;
       font-size: 0.875rem;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-schneider {
+      background: var(--schneider-dark);
+      color: #ffffff;
+      border: 1px solid var(--schneider-dark);
+      box-shadow: 0 2px 6px rgba(0, 135, 46, 0.25);
+    }
+
+    .btn-schneider:hover {
+      background: #007026;
+      transform: translateY(-1px);
     }
 
     .btn-dark {
       background: var(--navy);
       color: #ffffff;
       border: 1px solid var(--navy);
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15);
     }
 
     .btn-dark:hover {
       background: #1e293b;
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
     }
 
     .btn-outline {
       background: var(--surface);
       color: var(--text);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow-sm);
     }
 
     .btn-outline:hover {
-      border-color: var(--brand);
+      border-color: var(--schneider);
       background: #f8fafc;
       transform: translateY(-1px);
     }
 
-    /* SECTIONS STYLING */
-    section {
-      margin-top: 64px;
+    /* Grille de cartes d'exploration (Page de présentation) */
+    .explore-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
     }
 
-    .section-header {
+    .explore-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .explore-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .explore-card:hover {
+      border-color: var(--schneider);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .explore-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .explore-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--schneider-dark);
+      background: var(--schneider-subtle);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .explore-arrow {
+      color: var(--text-muted);
+      font-weight: 700;
+      transition: transform 0.2s;
+    }
+
+    .explore-card:hover .explore-arrow {
+      color: var(--schneider-dark);
+      transform: translateX(4px);
+    }
+
+    .explore-card h3 {
+      font-size: 1.15rem;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .explore-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* SECTIONS DÉTAILLÉES (AFFICHÉES UNIQUEMENT AU CLIC) */
+    .section-header-top {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .section-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--brand);
-      background: rgba(2, 132, 199, 0.08);
-      padding: 3px 8px;
-      border-radius: 6px;
-      border: 1px solid rgba(2, 132, 199, 0.2);
-    }
-
-    .section-title {
-      font-size: 1.35rem;
+    .section-title-wrap h2 {
+      font-size: 1.7rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       color: var(--text);
     }
 
-    .section-rule {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, var(--border), transparent);
+    .section-title-wrap p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
     }
 
-    /* CARDS */
-    .bento-stack {
+    .back-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .back-home-btn:hover {
+      border-color: var(--schneider);
+      color: var(--schneider-dark);
+    }
+
+    .card-stack {
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
 
-    .card {
+    .content-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 24px 26px;
+      padding: 24px;
       box-shadow: var(--shadow-sm);
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-    }
-
-    .card:hover {
-      border-color: var(--border-accent);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
     }
 
     .card-top {
@@ -469,24 +562,23 @@
     }
 
     .card-title {
-      font-size: 1.075rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--text);
-      letter-spacing: -0.015em;
     }
 
     .card-date {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.775rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      color: var(--brand-dark);
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
+      color: var(--schneider-dark);
+      background: var(--schneider-subtle);
+      border: 1px solid var(--schneider-border);
       padding: 2px 10px;
       border-radius: 999px;
     }
 
-    .card-subtitle {
+    .card-sub {
       font-size: 0.9rem;
       font-weight: 600;
       color: var(--text-muted);
@@ -505,30 +597,22 @@
     }
 
     .card-desc li {
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
 
-    /* Confidentiality Banner */
-    .defense-banner {
+    .defense-box {
       background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
       border: 1px solid #fde68a;
       border-radius: 12px;
       padding: 16px 20px;
       display: flex;
-      align-items: flex-start;
-      gap: 14px;
+      gap: 12px;
       color: #92400e;
       font-size: 0.875rem;
       line-height: 1.55;
       margin-bottom: 16px;
     }
 
-    .defense-icon {
-      font-size: 1.25rem;
-      line-height: 1;
-    }
-
-    /* Technical Tag Badges */
     .tags {
       display: flex;
       gap: 6px;
@@ -547,90 +631,71 @@
       border-radius: 6px;
     }
 
-    /* 2-Column Grid for Sports */
-    .grid-duo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
     /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
-      margin-top: 80px;
-      padding: 48px 0;
+      padding: 36px 0;
       background: var(--surface);
       text-align: center;
       color: var(--text-muted);
       font-size: 0.85rem;
     }
 
-    .footer-content {
-      max-width: 820px;
+    .footer-inner {
+      max-width: 860px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    .footer-links {
-      margin-top: 10px;
-      display: flex;
-      justify-content: center;
-      gap: 16px;
+    .footer-inner a {
+      color: var(--schneider-dark);
+      text-decoration: none;
       font-weight: 600;
     }
 
-    .footer-links a {
-      color: var(--brand-dark);
-      text-decoration: none;
-    }
-
-    .footer-links a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 680px) {
-      .hero-header {
-        flex-direction: column-reverse;
-      }
-      .metrics-bar {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-      .grid-duo {
-        grid-template-columns: 1fr;
-      }
-      .hero-titles h1 {
-        font-size: 2.1rem;
-      }
+    @media (max-width: 768px) {
+      .desktop-nav { display: none; }
+      .dropdown-trigger { display: inline-flex; }
+      .hero-header { flex-direction: column-reverse; }
+      .metrics-bar { grid-template-columns: 1fr; }
+      .explore-grid { grid-template-columns: 1fr; }
+      .hero-titles h1 { font-size: 2.1rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Texture Elements -->
-  <div class="bg-grid-pattern"></div>
-  <div class="ambient-glow-1"></div>
-  <div class="ambient-glow-2"></div>
+  <div class="bg-grid"></div>
+  <div class="ambient-halo"></div>
 
-  <!-- Top Sticky Navigation Bar -->
+  <!-- Barre de navigation haute -->
   <header class="site-header">
     <div class="nav-inner">
-      <a href="#home" class="brand-link">
+      <a class="brand-link" onclick="switchView('view-home')">
         <div class="brand-avatar-mini">GB</div>
         <span>Gautier Bareille</span>
       </a>
 
-      <!-- Dropdown Categories Menu -->
+      <!-- Navigation par onglets (Desktop) -->
+      <ul class="desktop-nav">
+        <li><button class="nav-tab-btn active" data-view="view-home">Overview</button></li>
+        <li><button class="nav-tab-btn" data-view="view-career">Career</button></li>
+        <li><button class="nav-tab-btn" data-view="view-experience">Experience</button></li>
+        <li><button class="nav-tab-btn" data-view="view-projects">Projects</button></li>
+        <li><button class="nav-tab-btn" data-view="view-sports">Sports & Interests</button></li>
+      </ul>
+
+      <!-- Menu déroulant (Mobile) -->
       <div class="dropdown">
-        <button class="dropdown-trigger" id="dropdownBtn" aria-expanded="false" aria-haspopup="true">
-          Categories <span class="dropdown-arrow">▼</span>
+        <button class="dropdown-trigger" id="dropdownBtn">
+          Menu <span>▼</span>
         </button>
         <ul class="dropdown-menu" id="dropdownList">
-          <li><a href="#home" class="menu-item">01. Overview</a></li>
-          <li><a href="#career" class="menu-item">02. Academic Career</a></li>
-          <li><a href="#experience" class="menu-item">03. Experience</a></li>
-          <li><a href="#projects" class="menu-item">04. Technical Projects</a></li>
-          <li><a href="#sports" class="menu-item">05. Sports & Interests</a></li>
+          <li><button data-view="view-home">01. Overview</button></li>
+          <li><button data-view="view-career">02. Academic Career</button></li>
+          <li><button data-view="view-experience">03. Experience</button></li>
+          <li><button data-view="view-projects">04. Technical Projects</button></li>
+          <li><button data-view="view-sports">05. Sports & Interests</button></li>
         </ul>
       </div>
     </div>
@@ -638,9 +703,11 @@
 
   <main class="main-wrapper">
 
-    <!-- HERO / PRESENTATION -->
-    <section id="home" class="hero" style="margin-top: 10px;">
-      <div class="badge-status">
+    <!-- ========================================== -->
+    <!-- 01. GRANDE PAGE DE PRÉSENTATION (HOME)    -->
+    <!-- ========================================== -->
+    <div id="view-home" class="view-panel active">
+      <div class="hero-badge">
         <span class="status-dot"></span>
         <span>Apprentice Engineer @ ENSEEIHT (3EA) & Schneider Electric</span>
       </div>
@@ -658,10 +725,9 @@
         </div>
 
         <p class="hero-bio">
-          Following a highly rewarding experience in the Armée de l'Air et de l'Espace, I returned to civilian higher education to build a specialized career in electrical engineering and power systems[cite: 1]. Driven by rigorous discipline, technical curiosity, and problem-solving, I completed my BTS Électrotechnique in 2026 and have now integrated Toulouse INP-ENSEEIHT within the 3EA engineering apprenticeship program in partnership with Schneider Electric[cite: 1].
+          Following a highly rewarding experience in the Armée de l'Air et de l'Espace, I returned to civilian higher education to build a specialized career in electrical engineering and power systems. Driven by rigorous discipline, technical curiosity, and problem-solving, I completed my BTS Électrotechnique in 2026 and have now integrated Toulouse INP-ENSEEIHT within the 3EA engineering apprenticeship program in partnership with Schneider Electric.
         </p>
 
-        <!-- Dynamic Metrics Ribbon -->
         <div class="metrics-bar">
           <div class="metric-item">
             <div class="metric-value">3EA</div>
@@ -673,45 +739,95 @@
           </div>
           <div class="metric-item">
             <div class="metric-value">10+ Yrs</div>
-            <div class="metric-label">Competitive Rugby[cite: 1]</div>
+            <div class="metric-label">Competitive Rugby</div>
           </div>
         </div>
 
         <div class="hero-actions">
-          <a href="CV_Gautier_Bareille_FR.pdf" target="_blank" class="btn btn-dark">
+          <a href="CV_Gautier_Bareille_FR.pdf" target="_blank" class="btn btn-schneider">
             Download Resume (FR) &darr;
           </a>
-          <a href="CV_Gautier_Bareille_EN.pdf" target="_blank" class="btn btn-dark">
+          <a href="CV_Gautier_Bareille_EN.pdf" target="_blank" class="btn btn-schneider">
             Download Resume (EN) &darr;
           </a>
           <a href="#" target="_blank" class="btn btn-outline">
             Target Job Offer &rarr;
           </a>
           <a href="mailto:gautier.bareille@icloud.com" class="btn btn-outline">
-            Contact Me
+            Email Contact
           </a>
         </div>
       </div>
-    </section>
 
-    <!-- CAREER -->
-    <section id="career">
-      <div class="section-header">
-        <span class="section-tag">02</span>
-        <h2 class="section-title">Academic Career & Training</h2>
-        <div class="section-rule"></div>
+      <div class="explore-title">Explore Portfolio Categories</div>
+      <div class="explore-grid">
+        <div class="explore-card" onclick="switchView('view-career')">
+          <div>
+            <div class="explore-header">
+              <span class="explore-tag">02</span>
+              <span class="explore-arrow">&rarr;</span>
+            </div>
+            <h3>Academic Career</h3>
+            <p>Engineering degree at ENSEEIHT, BTS Électrotechnique, and military training (EFSOAA).</p>
+          </div>
+        </div>
+
+        <div class="explore-card" onclick="switchView('view-experience')">
+          <div>
+            <div class="explore-header">
+              <span class="explore-tag">03</span>
+              <span class="explore-arrow">&rarr;</span>
+            </div>
+            <h3>Work Experience</h3>
+            <p>High-voltage substations at Schneider Electric, critical defense sites at Cegelec, and logistics.</p>
+          </div>
+        </div>
+
+        <div class="explore-card" onclick="switchView('view-projects')">
+          <div>
+            <div class="explore-header">
+              <span class="explore-tag">04</span>
+              <span class="explore-arrow">&rarr;</span>
+            </div>
+            <h3>Technical Projects</h3>
+            <p>400V three-phase sizing, Caneco BT notes, workspace refurbishment, and diagnostics.</p>
+          </div>
+        </div>
+
+        <div class="explore-card" onclick="switchView('view-sports')">
+          <div>
+            <div class="explore-header">
+              <span class="explore-tag">05</span>
+              <span class="explore-arrow">&rarr;</span>
+            </div>
+            <h3>Sports & Interests</h3>
+            <p>10+ years of competitive rugby, Formula 1 telemetry, cycling, and competitive pétanque.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 02. PAGE PARCOURS ACADÉMIQUE               -->
+    <!-- ========================================== -->
+    <div id="view-career" class="view-panel">
+      <div class="section-header-top">
+        <div class="section-title-wrap">
+          <h2>Academic Career & Training</h2>
+          <p>Educational progression following the Baccalauréat.</p>
+        </div>
+        <button class="back-home-btn" onclick="switchView('view-home')">&larr; Back to Overview</button>
       </div>
 
-      <div class="bento-stack">
-        <!-- ENSEEIHT -->
-        <article class="card">
+      <div class="card-stack">
+        <article class="content-card">
           <div class="card-top">
             <span class="card-title">Engineering Degree — 3EA (Apprenticeship Track)</span>
             <span class="card-date">2026 — 2029</span>
           </div>
-          <div class="card-subtitle">Toulouse INP-ENSEEIHT</div>
+          <div class="card-sub">Toulouse INP-ENSEEIHT</div>
           <p class="card-desc">
-            Three-year engineering program specializing in Electronics, Electrical Energy, and Automation (3EA)[cite: 1]. Comprehensive focus on high-voltage substations, static power conversion, automatic control systems, and industrial grid integration.
+            Three-year engineering program specializing in Electronics, Electrical Energy, and Automation (3EA). Comprehensive focus on high-voltage substations, static power conversion, automatic control systems, and industrial grid integration.
           </p>
           <div class="tags">
             <span class="tag">High Voltage</span>
@@ -721,15 +837,14 @@
           </div>
         </article>
 
-        <!-- BTS -->
-        <article class="card">
+        <article class="content-card">
           <div class="card-top">
             <span class="card-title">BTS Électrotechnique</span>
             <span class="card-date">2024 — 2026</span>
           </div>
-          <div class="card-subtitle">CFAI de Beauzelle (Toulouse)</div>
+          <div class="card-sub">CFAI de Beauzelle (Toulouse)</div>
           <p class="card-desc">
-            Advanced technical curriculum mastering industrial power distribution, Caneco BT calculations, single-line and multi-line schematic design, protection selectivity, cable dimensioning, and automated line diagnostics[cite: 1].
+            Advanced technical curriculum mastering industrial power distribution, Caneco BT calculations, single-line and multi-line schematic design, protection selectivity, cable dimensioning, and automated line diagnostics.
           </p>
           <div class="tags">
             <span class="tag">Caneco BT</span>
@@ -739,15 +854,14 @@
           </div>
         </article>
 
-        <!-- EFSOAA -->
-        <article class="card">
+        <article class="content-card">
           <div class="card-top">
             <span class="card-title">École de formation des sous-officiers de l'armée de l'air et de l'espace (EFSOAA)</span>
             <span class="card-date">Oct 2023 — Jan 2024</span>
           </div>
-          <div class="card-subtitle">Armée de l'Air et de l'Espace (Rochefort)</div>
+          <div class="card-sub">Armée de l'Air et de l'Espace (Rochefort)</div>
           <p class="card-desc">
-            Military non-commissioned officer training. Fostered operational rigor, extreme discipline, accountability, rapid execution under stress, and collective values[cite: 1].
+            Military non-commissioned officer training. Fostered operational rigor, extreme discipline, accountability, rapid execution under stress, and collective values.
           </p>
           <div class="tags">
             <span class="tag">Military Leadership</span>
@@ -756,41 +870,43 @@
           </div>
         </article>
 
-        <!-- BACCALAUREAT -->
-        <article class="card">
+        <article class="content-card">
           <div class="card-top">
             <span class="card-title">Baccalauréat Général (Mention Bien)</span>
             <span class="card-date">2023</span>
           </div>
-          <div class="card-subtitle">Lycée Clémence Royer (Fonsorbes)</div>
+          <div class="card-sub">Lycée Clémence Royer (Fonsorbes)</div>
           <p class="card-desc">
-            Scientific background with dual majors in Mathematics and Physics & Chemistry (Maths / PC)[cite: 1].
+            Scientific background with dual majors in Mathematics and Physics & Chemistry (Maths / PC).
           </p>
         </article>
       </div>
-    </section>
+    </div>
 
-    <!-- WORK EXPERIENCE -->
-    <section id="experience">
-      <div class="section-header">
-        <span class="section-tag">03</span>
-        <h2 class="section-title">Professional Experience</h2>
-        <div class="section-rule"></div>
+    <!-- ========================================== -->
+    <!-- 03. PAGE EXPÉRIENCE PROFESSIONNELLE        -->
+    <!-- ========================================== -->
+    <div id="view-experience" class="view-panel">
+      <div class="section-header-top">
+        <div class="section-title-wrap">
+          <h2>Professional Experience</h2>
+          <p>Practical engineering, on-site operations, and critical installations.</p>
+        </div>
+        <button class="back-home-btn" onclick="switchView('view-home')">&larr; Back to Overview</button>
       </div>
 
-      <div class="bento-stack">
-        <!-- SCHNEIDER ELECTRIC -->
-        <article class="card">
+      <div class="card-stack">
+        <article class="content-card">
           <div class="card-top">
             <span class="card-title">Schneider Electric — Apprentice Engineer</span>
             <span class="card-date">Sept 2026 — Sept 2029</span>
           </div>
-          <div class="card-subtitle">Technical-Commercial & High-Voltage Substations (Postes HTB)</div>
+          <div class="card-sub">Technical-Commercial & High-Voltage Substations (Postes HTB)</div>
           <div class="card-desc">
             <ul>
-              <li>Technical evaluation and proposal quotations for High-Voltage (HTB) substations and equipment[cite: 1].</li>
-              <li>Market analysis, customer technical requirements review, and economic feasibility studies[cite: 1].</li>
-              <li>Operational job site monitoring, field coordination, and full lifecycle project management[cite: 1].</li>
+              <li>Technical evaluation and proposal quotations for High-Voltage (HTB) substations and equipment.</li>
+              <li>Market analysis, customer technical requirements review, and economic feasibility studies.</li>
+              <li>Operational job site monitoring, field coordination, and full lifecycle project management.</li>
             </ul>
           </div>
           <div class="tags">
@@ -801,26 +917,24 @@
           </div>
         </article>
 
-        <!-- CONFIDENTIALITY NOTICE -->
-        <div class="defense-banner">
-          <span class="defense-icon">🔒</span>
+        <div class="defense-box">
+          <span style="font-size: 1.2rem;">🔒</span>
           <div>
             <strong>Confidentiality Disclosure (Secret Défense):</strong> Technical schematics, facility layouts, and specific operating sites related to missions carried out at Cegelec Défense are strictly protected under French Military Confidentiality Protocols and cannot be disclosed.
           </div>
         </div>
 
-        <!-- CEGELEC DEFENSE -->
-        <article class="card">
+        <article class="content-card">
           <div class="card-top">
             <span class="card-title">Cegelec Défense — Apprentice Electrician</span>
             <span class="card-date">Sept 2024 — Aug 2026</span>
           </div>
-          <div class="card-subtitle">Electrical Infrastructure & Critical Systems Maintenance</div>
+          <div class="card-sub">Electrical Infrastructure & Critical Systems Maintenance</div>
           <div class="card-desc">
             <ul>
-              <li>Execution of specialized low and medium voltage electrical works on critical defense assets[cite: 1].</li>
-              <li>Preventive and corrective maintenance on high-reliability power distributions and backup systems[cite: 1].</li>
-              <li>Field studies, site measurements, panel modification, and commissioning assistance[cite: 1].</li>
+              <li>Execution of specialized low and medium voltage electrical works on critical defense assets.</li>
+              <li>Preventive and corrective maintenance on high-reliability power distributions and backup systems.</li>
+              <li>Field studies, site measurements, panel modification, and commissioning assistance.</li>
             </ul>
           </div>
           <div class="tags">
@@ -831,31 +945,33 @@
           </div>
         </article>
 
-        <!-- TOULOUSE CARRELAGES -->
-        <article class="card">
+        <article class="content-card">
           <div class="card-top">
             <span class="card-title">Toulouse Carrelages — Logistics Lead & Staff Supervisor</span>
             <span class="card-date">Jan 2024 — Aug 2024</span>
           </div>
-          <div class="card-subtitle">Warehouse & Delivery Operations</div>
+          <div class="card-sub">Warehouse & Delivery Operations</div>
           <p class="card-desc">
-            Managed dispatch workflows, led temporary logistics teams, optimized inventory rotation, and enforced strict on-time delivery tracking[cite: 1].
+            Managed dispatch workflows, led temporary logistics teams, optimized inventory rotation, and enforced strict on-time delivery tracking.
           </p>
         </article>
       </div>
-    </section>
+    </div>
 
-    <!-- TECHNICAL PROJECTS -->
-    <section id="projects">
-      <div class="section-header">
-        <span class="section-tag">04</span>
-        <h2 class="section-title">Technical Projects & Diagnostics</h2>
-        <div class="section-rule"></div>
+    <!-- ========================================== -->
+    <!-- 04. PAGE PROJETS TECHNIQUES                -->
+    <!-- ========================================== -->
+    <div id="view-projects" class="view-panel">
+      <div class="section-header-top">
+        <div class="section-title-wrap">
+          <h2>Technical Projects & Diagnostics</h2>
+          <p>Design notes, cable sizing, schematics, and hands-on maintenance.</p>
+        </div>
+        <button class="back-home-btn" onclick="switchView('view-home')">&larr; Back to Overview</button>
       </div>
 
-      <div class="bento-stack">
-        <!-- PROJECT 1 -->
-        <article class="card">
+      <div class="card-stack">
+        <article class="content-card">
           <div class="card-top">
             <span class="card-title">400V Three-Phase Power Supply Sizing & Deployment</span>
             <span class="card-date">BTS Project</span>
@@ -876,8 +992,7 @@
           </div>
         </article>
 
-        <!-- PROJECT 2 -->
-        <article class="card">
+        <article class="content-card">
           <div class="card-top">
             <span class="card-title">Full Electrical Rehabilitation of 2 Collaborative Workspaces</span>
             <span class="card-date">BTS Project</span>
@@ -897,8 +1012,7 @@
           </div>
         </article>
 
-        <!-- PROJECT 3 -->
-        <article class="card">
+        <article class="content-card">
           <div class="card-top">
             <span class="card-title">Industrial Maintenance & Fault Diagnostics</span>
             <span class="card-date">CFA Practical Workshops</span>
@@ -911,65 +1025,104 @@
             </ul>
           </div>
           <div class="tags">
-            <span class="tag">Industrial Troubleshooting</span>
+            <span class="tag">Industrial Diagnostics</span>
             <span class="tag">VFD Drives</span>
             <span class="tag">Vibrating Bowl</span>
             <span class="tag">Ecolregul</span>
           </div>
         </article>
       </div>
-    </section>
+    </div>
 
-    <!-- SPORTS & INTERESTS -->
-    <section id="sports">
-      <div class="section-header">
-        <span class="section-tag">05</span>
-        <h2 class="section-title">Sports & Personal Pursuits</h2>
-        <div class="section-rule"></div>
+    <!-- ========================================== -->
+    <!-- 05. PAGE SPORTS & CENTRES D'INTÉRÊT        -->
+    <!-- ========================================== -->
+    <div id="view-sports" class="view-panel">
+      <div class="section-header-top">
+        <div class="section-title-wrap">
+          <h2>Sports & Personal Pursuits</h2>
+          <p>Competition, team spirit, and strategic focus.</p>
+        </div>
+        <button class="back-home-btn" onclick="switchView('view-home')">&larr; Back to Overview</button>
       </div>
 
-      <div class="grid-duo">
-        <article class="card">
+      <div class="card-stack">
+        <article class="content-card">
           <div class="card-top">
             <span class="card-title">Competitive Rugby</span>
             <span class="card-date">10+ Years</span>
           </div>
           <p class="card-desc">
-            Practicing rugby in competitive leagues since age 8, with selections in regional and departmental youth teams[cite: 1]. Directly cultivates core engineering values: extreme team solidarity, resilience through fatigue, collective commitment, and direct accountability on the field[cite: 1].
+            Practicing rugby in competitive leagues since age 8, with selections in regional and departmental youth teams. Directly cultivates core engineering values: extreme team solidarity, resilience through fatigue, collective commitment, and direct accountability on the field.
           </p>
         </article>
 
-        <article class="card">
+        <article class="content-card">
           <div class="card-top">
             <span class="card-title">Formula 1, Cycling & Pétanque</span>
-            <span class="card-date">Focus</span>
+            <span class="card-date">Interests</span>
           </div>
           <p class="card-desc">
-            Avid follower of Formula 1 (race strategy, aerodynamic packaging, and vehicle telemetry analysis) along with regular road cycling[cite: 1]. Also an active competitor in French pétanque, demanding intense mental calm, precise execution under pressure, and strategic risk management.
+            Avid follower of Formula 1 (race strategy, aerodynamic packaging, and vehicle telemetry analysis) along with regular road cycling. Also an active competitor in French pétanque, demanding intense mental calm, precise execution under pressure, and strategic risk management.
           </p>
         </article>
       </div>
-    </section>
+    </div>
 
   </main>
 
-  <!-- FOOTER -->
+  <!-- FOOTER SANS NUMÉRO DE TÉLÉPHONE -->
   <footer>
-    <div class="footer-content">
-      <p>© 2026 Gautier Bareille — Toulouse INP-ENSEEIHT (3EA) / Schneider Electric[cite: 1]</p>
-      <div class="footer-links">
+    <div class="footer-inner">
+      <p>© 2026 Gautier Bareille — Toulouse INP-ENSEEIHT (3EA) / Schneider Electric</p>
+      <p style="margin-top: 6px;">
         <a href="mailto:gautier.bareille@icloud.com">gautier.bareille@icloud.com</a>
-        <span>•</span>
-        <span>+33 7 ** ** ** **[cite: 1]</span>
-      </div>
+      </p>
     </div>
   </footer>
 
-  <!-- Interactive Dropdown Logic -->
+  <!-- SCRIPT DE GESTION DES ONGLETS / VUES -->
   <script>
+    function switchView(targetId) {
+      // 1. Masquer tous les panneaux
+      const panels = document.querySelectorAll('.view-panel');
+      panels.forEach(panel => panel.classList.remove('active'));
+
+      // 2. Afficher le panneau demandé
+      const activePanel = document.getElementById(targetId);
+      if (activePanel) {
+        activePanel.classList.add('active');
+      }
+
+      // 3. Mettre à jour l'état actif des boutons desktop
+      const desktopButtons = document.querySelectorAll('.nav-tab-btn');
+      desktopButtons.forEach(btn => {
+        if (btn.getAttribute('data-view') === targetId) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // 4. Fermer le dropdown mobile si ouvert
+      dropdownList.classList.remove('active');
+
+      // 5. Remonter en haut de page en douceur
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Événements pour boutons de navigation
+    document.querySelectorAll('[data-view]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetView = btn.getAttribute('data-view');
+        switchView(targetView);
+      });
+    });
+
+    // Gestion du menu déroulant
     const dropdownBtn = document.getElementById('dropdownBtn');
     const dropdownList = document.getElementById('dropdownList');
-    const menuItems = document.querySelectorAll('.menu-item');
 
     dropdownBtn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -980,12 +1133,6 @@
       if (!dropdownList.contains(e.target) && e.target !== dropdownBtn) {
         dropdownList.classList.remove('active');
       }
-    });
-
-    menuItems.forEach(item => {
-      item.addEventListener('click', () => {
-        dropdownList.classList.remove('active');
-      });
     });
   </script>
 
