@@ -3,27 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gautier Bareille — Engineering Apprentice | 3EA</title>
+  <title>Gautier Bareille — Apprentice Engineer | 3EA</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #f8fafc;
+      --bg: #fafafa;
       --surface: #ffffff;
-      --primary: #1e3a8a;
-      --primary-hover: #1d4ed8;
-      --accent: #0284c7;
-      --text: #0f172a;
-      --text-muted: #475569;
-      --border: #e2e8f0;
-      --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.02);
-      --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
-      --notice-bg: #fffbeb;
-      --notice-border: #fde68a;
-      --notice-text: #92400e;
+      --border: #e5e7eb;
+      --border-hover: #cbd5e1;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --accent: #0f172a;
+      --pill-bg: #f1f5f9;
+      --pill-text: #334155;
+      --notice-bg: #fefce8;
+      --notice-border: #fef08a;
+      --notice-text: #854d0e;
     }
 
     * {
@@ -37,68 +36,69 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      color: var(--text-main);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Top Sticky Navigation */
-    nav {
+    /* Sticky Minimal Header */
+    header.site-header {
       position: sticky;
       top: 0;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
+      background: rgba(250, 250, 250, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       z-index: 1000;
     }
 
-    .nav-container {
-      max-width: 1000px;
+    .nav-inner {
+      max-width: 680px;
       margin: 0 auto;
+      padding: 14px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 14px 24px;
-      position: relative;
     }
 
-    .nav-logo {
+    .brand-link {
       font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--primary);
+      font-size: 0.95rem;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
       text-decoration: none;
-      letter-spacing: -0.01em;
     }
 
-    /* Dropdown Component */
+    /* Dropdown */
     .dropdown {
       position: relative;
-      user-select: none;
     }
 
-    .dropdown-btn {
+    .dropdown-trigger {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background-color: var(--surface);
-      color: var(--text);
+      gap: 6px;
+      background: var(--surface);
       border: 1px solid var(--border);
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-size: 0.9rem;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
       font-weight: 600;
+      color: var(--text-main);
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.15s ease;
     }
 
-    .dropdown-btn:hover {
-      border-color: #cbd5e1;
-      background-color: #f1f5f9;
+    .dropdown-trigger:hover {
+      border-color: var(--border-hover);
+      background: #f8fafc;
     }
 
-    .dropdown-icon {
-      font-size: 0.75rem;
+    .dropdown-arrow {
+      font-size: 0.65rem;
+      color: var(--text-muted);
       transition: transform 0.2s ease;
     }
 
@@ -109,261 +109,249 @@
       top: calc(100% + 8px);
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-      min-width: 180px;
+      border-radius: 12px;
+      min-width: 170px;
       padding: 6px;
       list-style: none;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
       z-index: 1100;
     }
 
-    .dropdown-menu.show {
+    .dropdown-menu.active {
       display: block;
     }
 
     .dropdown-menu li a {
       display: block;
-      padding: 10px 14px;
-      color: var(--text);
+      padding: 8px 12px;
+      color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 500;
-      border-radius: 6px;
-      transition: background-color 0.15s ease, color 0.15s ease;
+      border-radius: 8px;
+      transition: all 0.15s ease;
     }
 
     .dropdown-menu li a:hover {
-      background-color: #eff6ff;
-      color: var(--primary);
+      color: var(--text-main);
+      background-color: var(--pill-bg);
     }
 
-    .container {
-      max-width: 900px;
+    /* Page Container */
+    .main-wrapper {
+      max-width: 680px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 50px 20px 100px;
     }
 
     /* Hero Section */
-    #home {
-      padding: 80px 0 60px;
+    .hero {
+      margin-bottom: 56px;
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      background-color: #eff6ff;
-      border: 1px solid #bfdbfe;
-      border-radius: 999px;
-      color: var(--accent);
-      font-size: 0.825rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-    }
-
-    .hero-badge span {
-      width: 8px;
-      height: 8px;
-      background-color: var(--accent);
-      border-radius: 50%;
-    }
-
-    h1 {
-      font-size: 2.75rem;
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: -0.03em;
-      color: var(--text);
-      margin-bottom: 16px;
-    }
-
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-      font-weight: 400;
-    }
-
-    .hero-bio {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      max-width: 740px;
-      margin-bottom: 32px;
-      line-height: 1.7;
-    }
-
-    .btn-group {
+    .hero-top {
       display: flex;
-      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--surface);
+      box-shadow: 0 0 0 1px var(--border), 0 4px 10px rgba(0,0,0,0.05);
+      background: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--text-muted);
+      font-size: 1.25rem;
+    }
+
+    .hero-titles h1 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .hero-titles .status {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .bio-text {
+      font-size: 1rem;
+      color: #334155;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    /* Actions & Buttons */
+    .action-row {
+      display: flex;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
-    .btn {
+    .pill-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
-      font-size: 0.9rem;
+      gap: 6px;
+      padding: 8px 14px;
+      font-size: 0.825rem;
       font-weight: 600;
-      border-radius: 6px;
+      border-radius: 999px;
       text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .btn-primary {
-      background-color: var(--primary);
-      color: #ffffff;
-      border: 1px solid var(--primary);
-    }
-
-    .btn-primary:hover {
-      background-color: var(--primary-hover);
-    }
-
-    .btn-secondary {
-      background-color: var(--surface);
-      color: var(--text);
+      transition: all 0.15s ease;
+      background: var(--surface);
       border: 1px solid var(--border);
+      color: var(--text-main);
     }
 
-    .btn-secondary:hover {
-      background-color: #f1f5f9;
-      border-color: #cbd5e1;
+    .pill-btn:hover {
+      background: #f1f5f9;
+      border-color: var(--border-hover);
+      transform: translateY(-1px);
+    }
+
+    .pill-btn-dark {
+      background: var(--text-main);
+      color: #ffffff;
+      border-color: var(--text-main);
+    }
+
+    .pill-btn-dark:hover {
+      background: #1e293b;
+      color: #ffffff;
+      border-color: #1e293b;
     }
 
     /* Sections */
     section {
-      padding: 60px 0;
-      border-top: 1px solid var(--border);
+      margin-top: 56px;
     }
 
-    h2 {
-      font-size: 1.75rem;
+    .section-title {
+      font-size: 0.85rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 20px;
     }
 
-    .section-desc {
-      color: var(--text-muted);
-      font-size: 1rem;
-      margin-bottom: 32px;
+    /* Modular Cards */
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 24px;
-      margin-bottom: 20px;
-      box-shadow: var(--card-shadow);
+      border-radius: 12px;
+      padding: 20px;
       transition: all 0.2s ease;
     }
 
     .card:hover {
-      box-shadow: var(--card-shadow-hover);
-      border-color: #cbd5e1;
+      border-color: var(--border-hover);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
     }
 
-    .card-header {
+    .card-head {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
+      gap: 10px;
       flex-wrap: wrap;
-      gap: 8px;
     }
 
     .card-title {
-      font-size: 1.15rem;
+      font-size: 1rem;
       font-weight: 600;
-      color: var(--text);
+      color: var(--text-main);
+      letter-spacing: -0.01em;
     }
 
-    .card-period {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--accent);
-      background: #eff6ff;
-      padding: 2px 10px;
-      border-radius: 999px;
-    }
-
-    .card-subtitle {
-      font-size: 0.95rem;
+    .card-date {
+      font-size: 0.775rem;
       font-weight: 500;
-      color: var(--primary);
+      color: var(--text-muted);
+    }
+
+    .card-sub {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
       margin-bottom: 12px;
     }
 
     .card-body {
-      color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      color: #475569;
       line-height: 1.6;
     }
 
     .card-body ul {
-      margin-left: 20px;
-      margin-top: 8px;
+      margin-left: 18px;
+      margin-top: 6px;
     }
 
-    .notice {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .card-body li {
+      margin-bottom: 4px;
+    }
+
+    /* Secret Notice */
+    .confidential-box {
       background-color: var(--notice-bg);
       border: 1px solid var(--notice-border);
       color: var(--notice-text);
-      padding: 14px 18px;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      margin-bottom: 24px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.825rem;
       line-height: 1.5;
+      margin-bottom: 16px;
     }
 
-    .tags {
+    /* Tags */
+    .tag-row {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       flex-wrap: wrap;
       margin-top: 14px;
     }
 
     .tag {
-      font-size: 0.775rem;
-      background-color: #f1f5f9;
-      color: var(--text-muted);
-      padding: 4px 10px;
-      border-radius: 4px;
+      font-size: 0.725rem;
+      background: var(--pill-bg);
+      color: var(--pill-text);
+      padding: 3px 8px;
+      border-radius: 6px;
       font-weight: 500;
-      border: 1px solid var(--border);
     }
 
-    .grid-2 {
+    /* Sports Grid */
+    .two-col-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .sports-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: var(--card-shadow);
-    }
-
-    .sports-card h3 {
-      font-size: 1.15rem;
-      margin-bottom: 10px;
-      color: var(--primary);
-    }
-
-    .sports-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
 
     footer {
@@ -371,302 +359,321 @@
       padding: 40px 0;
       text-align: center;
       color: var(--text-muted);
-      font-size: 0.875rem;
-      background: var(--surface);
+      font-size: 0.825rem;
     }
 
-    @media (max-width: 640px) {
-      h1 { font-size: 2.1rem; }
+    @media (max-width: 600px) {
+      .hero-top {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+      }
+      .two-col-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-container">
-      <a href="#home" class="nav-logo">Gautier Bareille</a>
+  <!-- Top Sticky Bar -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="#home" class="brand-link">Gautier Bareille</a>
       
-      <!-- Dropdown Menu -->
       <div class="dropdown">
-        <button class="dropdown-btn" id="menuBtn" aria-expanded="false" aria-haspopup="true">
-          Menu <span class="dropdown-icon">▼</span>
+        <button class="dropdown-trigger" id="dropdownBtn" aria-label="Open navigation menu">
+          Menu <span class="dropdown-arrow">▼</span>
         </button>
-        <ul class="dropdown-menu" id="menuList">
-          <li><a href="#home" class="menu-link">Home</a></li>
-          <li><a href="#career" class="menu-link">Career</a></li>
-          <li><a href="#experience" class="menu-link">Experience</a></li>
-          <li><a href="#projects" class="menu-link">Projects</a></li>
-          <li><a href="#sports" class="menu-link">Sports</a></li>
+        <ul class="dropdown-menu" id="dropdownMenu">
+          <li><a href="#home" class="nav-item">About</a></li>
+          <li><a href="#career" class="nav-item">Career</a></li>
+          <li><a href="#experience" class="nav-item">Experience</a></li>
+          <li><a href="#projects" class="nav-item">Projects</a></li>
+          <li><a href="#sports" class="nav-item">Sports & Interests</a></li>
         </ul>
       </div>
     </div>
-  </nav>
+  </header>
 
-  <div class="container">
+  <main class="main-wrapper">
 
-    <!-- HOME -->
-    <section id="home" style="border-top: none;">
-      <div class="hero-badge">
-        <span></span> Graduate Engineering Apprentice — ENSEEIHT (3EA)
+    <!-- HOME / PROFILE -->
+    <section id="home" class="hero" style="margin-top: 0;">
+      <div class="hero-top">
+        <div class="hero-titles">
+          <h1>Gautier Bareille</h1>
+          <p class="status">Engineering Apprentice @ Toulouse INP-ENSEEIHT & Schneider Electric</p>
+        </div>
+        <div class="avatar-wrapper">
+          <!-- Place your profile.jpg in the repository root or keep the monogram -->
+          <img src="profile.jpg" alt="Gautier Bareille" class="avatar" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'avatar\'>GB</div>';">
+        </div>
       </div>
-      <h1>Electrical Engineering & Power Systems</h1>
-      <p class="hero-subtitle">Toulouse INP-ENSEEIHT | Schneider Electric</p>
-      
-      <p class="hero-bio">
+
+      <p class="bio-text">
         Following valuable military experience in the Armée de l'Air et de l'Espace, I returned to civilian higher education to pursue my passion for electrical engineering and power systems[cite: 1]. Driven, adaptable, and solution-oriented, I completed my BTS Électrotechnique in 2026 and have now joined Toulouse INP-ENSEEIHT in the 3EA engineering apprenticeship program, working alongside Schneider Electric[cite: 1].
       </p>
 
-      <div class="btn-group">
-        <a href="CV_Gautier_Bareille_FR.pdf" target="_blank" class="btn btn-primary">
-          Download Resume (FR) &darr;
+      <div class="action-row">
+        <a href="CV_Gautier_Bareille_FR.pdf" target="_blank" class="pill-btn pill-btn-dark">
+          Download CV (FR) &darr;
         </a>
-        <a href="CV_Gautier_Bareille_EN.pdf" target="_blank" class="btn btn-primary">
-          Download Resume (EN) &darr;
+        <a href="CV_Gautier_Bareille_EN.pdf" target="_blank" class="pill-btn pill-btn-dark">
+          Download CV (EN) &darr;
         </a>
-        <a href="#" target="_blank" class="btn btn-secondary">
+        <a href="#" target="_blank" class="pill-btn">
           Target Job Offer &rarr;
+        </a>
+        <a href="mailto:gautier.bareille@icloud.com" class="pill-btn">
+          Email
         </a>
       </div>
     </section>
 
     <!-- CAREER -->
     <section id="career">
-      <h2>Academic Career & Training</h2>
-      <p class="section-desc">My educational progression and background following the Baccalauréat.</p>
+      <h2 class="section-title">Education & Military Background</h2>
+      <div class="card-list">
 
-      <div class="card">
-        <div class="card-header">
-          <span class="card-title">Engineering Degree — 3EA (Apprenticeship Track)</span>
-          <span class="card-period">2026 — 2029</span>
-        </div>
-        <div class="card-subtitle">Toulouse INP-ENSEEIHT</div>
-        <div class="card-body">
-          Specialization in Electronics, Electrical Energy, and Automation (3EA)[cite: 1]. Comprehensive training covering power networks, high-voltage systems, static power converters, grid integration, and industrial control.
-        </div>
-      </div>
+        <article class="card">
+          <div class="card-head">
+            <span class="card-title">Engineering Degree — 3EA (Apprenticeship Track)</span>
+            <span class="card-date">2026 — 2029</span>
+          </div>
+          <div class="card-sub">Toulouse INP-ENSEEIHT</div>
+          <p class="card-body">
+            Specialization in Electronics, Electrical Energy, and Automation (3EA)[cite: 1]. Core curriculum in high-voltage grids, power electronic converters, control systems, and industrial electrical design.
+          </p>
+        </article>
 
-      <div class="card">
-        <div class="card-header">
-          <span class="card-title">BTS Électrotechnique</span>
-          <span class="card-period">2024 — 2026</span>
-        </div>
-        <div class="card-subtitle">CFAI de Beauzelle</div>
-        <div class="card-body">
-          Advanced technical degree covering electrical installation design, Caneco calculation notes, single-line and multi-line schematic drafting, cable sizing, industrial automation, and electrical diagnostics[cite: 1].
-        </div>
-      </div>
+        <article class="card">
+          <div class="card-head">
+            <span class="card-title">BTS Électrotechnique</span>
+            <span class="card-date">2024 — 2026</span>
+          </div>
+          <div class="card-sub">CFAI de Beauzelle</div>
+          <p class="card-body">
+            Electrical network sizing, Caneco calculation notes, single-line and multi-line electrical drafting, circuit protections, industrial automation, and machinery diagnostics[cite: 1].
+          </p>
+        </article>
 
-      <div class="card">
-        <div class="card-header">
-          <span class="card-title">École de formation des sous-officiers de l'armée de l'air et de l'espace (EFSOAA)</span>
-          <span class="card-period">Oct 2023 — Jan 2024</span>
-        </div>
-        <div class="card-subtitle">Armée de l'Air et de l'Espace (Rochefort)</div>
-        <div class="card-body">
-          Military non-commissioned officer training. Instilled operational rigor, rapid adaptation, structured discipline, high resilience under pressure, and fundamental collective values[cite: 1].
-        </div>
-      </div>
+        <article class="card">
+          <div class="card-head">
+            <span class="card-title">École de formation des sous-officiers de l'armée de l'air et de l'espace (EFSOAA)</span>
+            <span class="card-date">Oct 2023 — Jan 2024</span>
+          </div>
+          <div class="card-sub">Armée de l'Air et de l'Espace (Rochefort)</div>
+          <p class="card-body">
+            Military and non-commissioned officer training. Fostered operational rigor, high adaptability, structured discipline, resilience under pressure, and collective values[cite: 1].
+          </p>
+        </article>
 
-      <div class="card">
-        <div class="card-header">
-          <span class="card-title">Baccalauréat Général — Mention Bien</span>
-          <span class="card-period">2023</span>
-        </div>
-        <div class="card-subtitle">Lycée Clémence Royer (Fonsorbes)</div>
-        <div class="card-body">
-          Majors in Mathematics and Physics-Chemistry (Maths / PC)[cite: 1].
-        </div>
+        <article class="card">
+          <div class="card-head">
+            <span class="card-title">Baccalauréat Général (Mention Bien)</span>
+            <span class="card-date">2023</span>
+          </div>
+          <div class="card-sub">Lycée Clémence Royer (Fonsorbes)</div>
+          <p class="card-body">
+            Majors in Mathematics and Physics-Chemistry (Maths / PC)[cite: 1].
+          </p>
+        </article>
+
       </div>
     </section>
 
     <!-- EXPERIENCE -->
     <section id="experience">
-      <h2>Professional Experience</h2>
-      <p class="section-desc">Practical engineering, site supervision, and critical infrastructure maintenance.</p>
+      <h2 class="section-title">Work Experience</h2>
+      <div class="card-list">
 
-      <div class="card">
-        <div class="card-header">
-          <span class="card-title">Schneider Electric — Apprentice Engineer</span>
-          <span class="card-period">Sept 2026 — Sept 2029</span>
-        </div>
-        <div class="card-subtitle">Technical-Commercial & High-Voltage Substations (Postes HTB)</div>
-        <div class="card-body">
-          <ul>
-            <li>Preparation of technical proposals and comprehensive commercial quotations for high-voltage (HTB) substations[cite: 1].</li>
-            <li>Market analysis, customer technical requirements review, and feasibility evaluations[cite: 1].</li>
-            <li>On-site operational monitoring, customer liaison, and overall project management[cite: 1].</li>
-          </ul>
-        </div>
-        <div class="tags">
-          <span class="tag">HTB Substations</span>
-          <span class="tag">High Voltage</span>
-          <span class="tag">Commercial Engineering</span>
-          <span class="tag">Project Management</span>
-        </div>
-      </div>
+        <article class="card">
+          <div class="card-head">
+            <span class="card-title">Schneider Electric — Apprentice Engineer</span>
+            <span class="card-date">Sept 2026 — Sept 2029</span>
+          </div>
+          <div class="card-sub">Technical-Commercial & High-Voltage Substations (Postes HTB)</div>
+          <div class="card-body">
+            <ul>
+              <li>Technical proposals and quotations for high-voltage (HTB) substations[cite: 1].</li>
+              <li>Market analysis and technical-economic feasibility assessments[cite: 1].</li>
+              <li>On-site operational monitoring, contractor coordination, and project management[cite: 1].</li>
+            </ul>
+          </div>
+          <div class="tag-row">
+            <span class="tag">HTB Substations</span>
+            <span class="tag">High Voltage</span>
+            <span class="tag">Technical Sales</span>
+            <span class="tag">Project Management</span>
+          </div>
+        </article>
 
-      <div class="notice">
-        <strong>Confidentiality Notice:</strong> Technical documentation, exact architectures, and site locations regarding work executed at Cegelec Défense are subject to French Defense Confidentiality Protocols (Secret Défense) and cannot be publicly disclosed.
-      </div>
+        <div class="confidential-box">
+          <strong>Confidentiality Notice:</strong> Technical details and site locations for work performed at Cegelec Défense are strictly restricted under French Defense Non-Disclosure Protocols (Secret Défense).
+        </div>
 
-      <div class="card">
-        <div class="card-header">
-          <span class="card-title">Cegelec Défense — Apprentice Electrician</span>
-          <span class="card-period">Sept 2024 — Aug 2026</span>
-        </div>
-        <div class="card-subtitle">Electrical Infrastructure & Critical Systems Maintenance</div>
-        <div class="card-body">
-          <ul>
-            <li>Execution of specialized low and medium voltage electrical works across defense and secure infrastructure[cite: 1].</li>
-            <li>Preventive and corrective maintenance on complex, critical power systems[cite: 1].</li>
-            <li>On-site technical surveys, installation diagnostics, and system commissioning[cite: 1].</li>
-          </ul>
-        </div>
-        <div class="tags">
-          <span class="tag">Defense Infrastructure</span>
-          <span class="tag">Power Distribution</span>
-          <span class="tag">Preventive Maintenance</span>
-          <span class="tag">Commissioning</span>
-        </div>
-      </div>
+        <article class="card">
+          <div class="card-head">
+            <span class="card-title">Cegelec Défense — Apprentice Electrician</span>
+            <span class="card-date">Sept 2024 — Aug 2026</span>
+          </div>
+          <div class="card-sub">Electrical Infrastructure & Critical Systems Maintenance</div>
+          <div class="card-body">
+            <ul>
+              <li>Electrical works across sensitive defense infrastructure[cite: 1].</li>
+              <li>Preventive and corrective maintenance on complex power distribution equipment[cite: 1].</li>
+              <li>Field studies, cable sizing, and installation commissioning[cite: 1].</li>
+            </ul>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Defense Infrastructure</span>
+            <span class="tag">Power Distribution</span>
+            <span class="tag">Maintenance</span>
+            <span class="tag">Commissioning</span>
+          </div>
+        </article>
 
-      <div class="card">
-        <div class="card-header">
-          <span class="card-title">Toulouse Carrelages — Logistics Lead & Temp Staff Supervisor</span>
-          <span class="card-period">Jan 2024 — Aug 2024</span>
-        </div>
-        <div class="card-subtitle">Operations & Warehouse Management</div>
-        <div class="card-body">
-          Supervised daily dispatch schedules, managed and organized temporary worker teams, oversaw warehouse logistics, and ensured rigorous stock coordination[cite: 1].
-        </div>
+        <article class="card">
+          <div class="card-head">
+            <span class="card-title">Toulouse Carrelages — Logistics Lead & Staff Supervisor</span>
+            <span class="card-date">Jan 2024 — Aug 2024</span>
+          </div>
+          <div class="card-sub">Warehouse & Delivery Operations</div>
+          <p class="card-body">
+            Coordinated daily transport dispatch, supervised temporary worker teams, managed warehouse stock flow, and organized warehouse inventory[cite: 1].
+          </p>
+        </article>
+
       </div>
     </section>
 
     <!-- PROJECTS -->
     <section id="projects">
-      <h2>Engineering Projects & Technical Workshops</h2>
-      <p class="section-desc">Practical sizing, design calculation, and industrial troubleshooting.</p>
+      <h2 class="section-title">Technical Projects & Diagnostics</h2>
+      <div class="card-list">
 
-      <div class="card">
-        <div class="card-header">
-          <span class="card-title">400V Three-Phase Power Supply Sizing & Installation</span>
-          <span class="card-period">BTS Technical Project</span>
-        </div>
-        <div class="card-body">
-          Full technical engineering study for the deployment of 400V three-phase industrial sockets:
-          <ul>
-            <li>Comprehensive calculation notes performed via Caneco BT: voltage drop verification, thermal constraints, and prospective short-circuit currents.</li>
-            <li>Protection coordination: selective circuit breakers, residual current devices (RCDs), and optimal cable cross-section sizing.</li>
-            <li>Production of complete single-line and multi-line electrical schematics.</li>
-          </ul>
-        </div>
-        <div class="tags">
-          <span class="tag">Caneco BT</span>
-          <span class="tag">400V Three-Phase</span>
-          <span class="tag">Protection Coordination</span>
-          <span class="tag">Schematics</span>
-        </div>
-      </div>
+        <article class="card">
+          <div class="card-head">
+            <span class="card-title">400V Three-Phase Power Supply Sizing & Deployment</span>
+            <span class="card-date">BTS Project</span>
+          </div>
+          <div class="card-body">
+            Complete technical sizing and execution for 400V three-phase industrial sockets:
+            <ul>
+              <li>Caneco BT calculation notes: voltage drop verification, thermal constraints, and short-circuit current analysis.</li>
+              <li>Protection coordination: circuit breakers, residual current devices (RCDs), and cable cross-section optimization.</li>
+              <li>Drafting full single-line and multi-line electrical schematics.</li>
+            </ul>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Caneco BT</span>
+            <span class="tag">400V Three-Phase</span>
+            <span class="tag">Protection Coordination</span>
+            <span class="tag">Schematics</span>
+          </div>
+        </article>
 
-      <div class="card">
-        <div class="card-header">
-          <span class="card-title">Complete Electrical Rehabilitation of Two Workspaces</span>
-          <span class="card-period">BTS Technical Project</span>
-        </div>
-        <div class="card-body">
-          Turnkey engineering and on-site deployment for modern commercial workspaces:
-          <ul>
-            <li>Preliminary design study: lighting level calculations (lux), circuit segregation, electrical panel dimensioning, and safety compliance.</li>
-            <li>Hands-on installation: containment routing, cable pulling, power socket wiring, and data connectivity.</li>
-            <li><em>Note: Specific project details and facility routing are omitted due to confidentiality commitments.</em></li>
-          </ul>
-        </div>
-        <div class="tags">
-          <span class="tag">Building Electrics</span>
-          <span class="tag">Low Voltage</span>
-          <span class="tag">Site Execution</span>
-        </div>
-      </div>
+        <article class="card">
+          <div class="card-head">
+            <span class="card-title">Complete Electrical Rehabilitation of Two Workspaces</span>
+            <span class="card-date">BTS Project</span>
+          </div>
+          <div class="card-body">
+            Full study and field refurbishment for commercial collaborative workspaces:
+            <ul>
+              <li>Engineering study: lighting level calculations (lux), circuit distribution, and panel board dimensioning.</li>
+              <li>Field installation: containment routing, cable pulling, power sockets, and RJ45 data connectivity.</li>
+              <li><em>Note: Specific project details and facility routing remain confidential.</em></li>
+            </ul>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Building Electrics</span>
+            <span class="tag">Low Voltage</span>
+            <span class="tag">Site Execution</span>
+          </div>
+        </article>
 
-      <div class="card">
-        <div class="card-header">
-          <span class="card-title">Industrial Maintenance & Diagnostics</span>
-          <span class="card-period">CFA Practical Workshops</span>
-        </div>
-        <div class="card-body">
-          Root-cause diagnosis and electrical troubleshooting on operational industrial equipment:
-          <ul>
-            <li><strong>Industrial Hoist Axis:</strong> Fault analysis on electromechanical brake circuits, motor drive testing, and variable frequency drive (VFD) parameterization.</li>
-            <li><strong>Automated Packaging Line:</strong> Diagnostics and calibration across vibrating bowl feeders, industrial heating ovens, and Ecolregul process control loops.</li>
-          </ul>
-        </div>
-        <div class="tags">
-          <span class="tag">Industrial Troubleshooting</span>
-          <span class="tag">Vibrating Bowl</span>
-          <span class="tag">Industrial Ovens</span>
-          <span class="tag">Ecolregul</span>
-        </div>
+        <article class="card">
+          <div class="card-head">
+            <span class="card-title">Industrial Systems Maintenance & Fault Diagnostics</span>
+            <span class="card-date">CFA Workshops</span>
+          </div>
+          <div class="card-body">
+            Root-cause analysis and electrical repair on operational machinery:
+            <ul>
+              <li><strong>Industrial Hoist Axis:</strong> Brake control analysis, motor circuit diagnostics, and variable frequency drive (VFD) tuning.</li>
+              <li><strong>Automated Packaging Line:</strong> Diagnostics across vibrating bowl feeders, industrial heating ovens, and Ecolregul process loops.</li>
+            </ul>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Industrial Diagnostics</span>
+            <span class="tag">VFDs</span>
+            <span class="tag">Vibrating Bowl</span>
+            <span class="tag">Ecolregul</span>
+          </div>
+        </article>
+
       </div>
     </section>
 
-    <!-- SPORTS -->
+    <!-- SPORTS & INTERESTS -->
     <section id="sports">
-      <h2>Sports & Personal Pursuits</h2>
-      <p class="section-desc">Competitive background, team values, and strategic focus.</p>
+      <h2 class="section-title">Sports & Personal Pursuits</h2>
+      <div class="two-col-grid">
 
-      <div class="grid-2">
-        <div class="sports-card">
-          <h3>Competitive Rugby (10+ Years)</h3>
-          <p>
-            Playing competitive rugby since age 8, including selections in regional and departmental youth teams[cite: 1]. Rugby is central to my mindset: it instills solid team spirit, personal accountability, collective resilience under fatigue, and on-field leadership[cite: 1].
+        <article class="card">
+          <div class="card-head">
+            <span class="card-title">Competitive Rugby</span>
+            <span class="card-date">10+ Years</span>
+          </div>
+          <p class="card-body">
+            Playing rugby competitively since age 8, including regional and departmental selections[cite: 1]. Builds core engineering qualities: accountability, collective discipline under fatigue, resilience, and on-field team leadership[cite: 1].
           </p>
-        </div>
+        </article>
 
-        <div class="sports-card">
-          <h3>Formula 1, Cycling & Pétanque</h3>
-          <p>
-            Keen follower of Formula 1 (race strategy, mechanical telemetry, and performance analysis) alongside regular road cycling[cite: 1]. I also play competitive French pétanque, demanding composure, high mental focus, and tactical decision-making under match conditions.
+        <article class="card">
+          <div class="card-head">
+            <span class="card-title">Formula 1, Cycling & Pétanque</span>
+            <span class="card-date">Interests</span>
+          </div>
+          <p class="card-body">
+            Follower of Formula 1 (race engineering, strategy, and telemetry) alongside regular road cycling[cite: 1]. Competitive pétanque player, developing composure, high mental focus, and tactical decision-making under pressure.
           </p>
-        </div>
+        </article>
+
       </div>
     </section>
 
-  </div>
+  </main>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer>
-    <div class="container">
-      <p>© 2026 Gautier Bareille — Toulouse INP-ENSEEIHT (3EA) / Schneider Electric[cite: 1]</p>
-      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">
-        Contact: <a href="mailto:gautier.bareille@icloud.com" style="color: var(--accent); text-decoration: none;">gautier.bareille@icloud.com</a> | +33 7 66 09 60 25[cite: 1]
-      </p>
-    </div>
+    <p>© 2026 Gautier Bareille — Toulouse INP-ENSEEIHT (3EA) / Schneider Electric[cite: 1]</p>
+    <p style="margin-top: 6px; font-size: 0.775rem;">
+      <a href="mailto:gautier.bareille@icloud.com" style="color: var(--text-main); text-decoration: none; font-weight: 500;">gautier.bareille@icloud.com</a> | +33 7 66 09 60 25[cite: 1]
+    </p>
   </footer>
 
-  <!-- Script for Dropdown behavior -->
+  <!-- Script for Dropdown -->
   <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const menuList = document.getElementById('menuList');
-    const menuLinks = document.querySelectorAll('.menu-link');
+    const dropdownBtn = document.getElementById('dropdownBtn');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const navItems = document.querySelectorAll('.nav-item');
 
-    // Toggle menu visibility
-    menuBtn.addEventListener('click', (e) => {
+    dropdownBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      menuList.classList.toggle('show');
+      dropdownMenu.classList.toggle('active');
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-      if (!menuList.contains(e.target) && e.target !== menuBtn) {
-        menuList.classList.remove('show');
+      if (!dropdownMenu.contains(e.target) && e.target !== dropdownBtn) {
+        dropdownMenu.classList.remove('active');
       }
     });
 
-    // Close menu after clicking an item
-    menuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        menuList.classList.remove('show');
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        dropdownMenu.classList.remove('active');
       });
     });
   </script>
