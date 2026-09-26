@@ -1,19 +1,29 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio — Apprenti Ingénieur 3EA | Toulouse INP-ENSEEIHT</title>
+  <title>Gautier Bareille — Electrical & Systems Engineering Apprentice</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #0c1017;
-      --surface: #151b23;
-      --border: #212836;
-      --border-focus: #303b4d;
-      --text: #f0f3f6;
-      --text-sub: #89929f;
-      --accent: #2dd4bf; /* Menthe technique */
-      --accent-dim: rgba(45, 212, 191, 0.12);
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --primary: #1e3a8a;       /* Deep technical navy */
+      --primary-hover: #1e40af;
+      --accent: #0284c7;        /* Clean engineering blue */
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.02);
+      --card-shadow-hover: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+      --notice-bg: #fffbeb;
+      --notice-border: #fde68a;
+      --notice-text: #92400e;
     }
 
     * {
@@ -22,340 +32,572 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      padding: 0 20px;
     }
 
-    .wrapper {
-      max-width: 740px;
+    /* Fixed Navigation Bar */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 70px 0 90px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
     }
 
-    header {
-      margin-bottom: 48px;
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
     }
 
-    .badge-status {
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Hero Section */
+    #home {
+      padding: 80px 0 60px;
+    }
+
+    .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 4px 10px;
-      background-color: var(--accent-dim);
-      border: 1px solid rgba(45, 212, 191, 0.3);
-      border-radius: 6px;
+      padding: 6px 14px;
+      background-color: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
       color: var(--accent);
-      font-size: 0.8rem;
-      font-weight: 500;
-      margin-bottom: 18px;
+      font-size: 0.825rem;
+      font-weight: 600;
+      margin-bottom: 24px;
     }
 
-    .badge-status span {
-      width: 6px;
-      height: 6px;
+    .hero-badge span {
+      width: 8px;
+      height: 8px;
       background-color: var(--accent);
       border-radius: 50%;
     }
 
     h1 {
-      font-size: 2.1rem;
+      font-size: 2.75rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 6px;
-    }
-
-    .role-title {
-      font-size: 1.1rem;
-      color: var(--accent);
-      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      color: var(--text);
       margin-bottom: 16px;
     }
 
-    .summary {
-      color: var(--text-sub);
-      font-size: 1rem;
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-muted);
       margin-bottom: 24px;
+      font-weight: 400;
     }
 
-    .action-links {
+    .hero-bio {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 720px;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .btn-group {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      padding: 7px 14px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text);
-      background: var(--surface);
-      border: 1px solid var(--border);
+      gap: 8px;
+      padding: 10px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
       border-radius: 6px;
       text-decoration: none;
-      transition: border-color 0.15s, background-color 0.15s;
+      transition: all 0.2s ease;
     }
 
-    .btn:hover {
-      border-color: var(--border-focus);
-      background: #1c2430;
+    .btn-primary {
+      background-color: var(--primary);
+      color: #ffffff;
+      border: 1px solid var(--primary);
     }
 
-    .btn-contact {
-      background: var(--accent);
-      color: #042f2e;
-      border-color: var(--accent);
-      font-weight: 600;
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
     }
 
-    .btn-contact:hover {
-      background: #5eead4;
-      border-color: #5eead4;
-      color: #042f2e;
+    .btn-secondary {
+      background-color: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
     }
 
+    .btn-secondary:hover {
+      background-color: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    /* Sections */
     section {
-      margin-top: 50px;
+      padding: 60px 0;
+      border-top: 1px solid var(--border);
     }
 
     h2 {
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-sub);
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 8px;
-    }
-
-    /* Expérience & Formation */
-    .block-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 16px;
-    }
-
-    .block-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 4px;
-    }
-
-    .period {
-      font-size: 0.8rem;
-      color: var(--text-sub);
-      font-weight: 400;
-    }
-
-    .subtitle {
-      color: var(--accent);
-      font-size: 0.9rem;
-      margin-bottom: 10px;
-    }
-
-    .block-desc {
-      color: var(--text-sub);
-      font-size: 0.9rem;
-    }
-
-    /* Compétences */
-    .skills-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-    }
-
-    .skill-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 16px;
-    }
-
-    .skill-box h3 {
-      font-size: 0.9rem;
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
       color: var(--text);
-      margin-bottom: 6px;
-    }
-
-    .skill-box p {
-      font-size: 0.85rem;
-      color: var(--text-sub);
-    }
-
-    /* Projets */
-    .project-header {
-      font-size: 1.1rem;
-      font-weight: 600;
       margin-bottom: 8px;
     }
 
-    .p-tags {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin: 12px 0;
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 32px;
     }
 
-    .p-tag {
-      font-size: 0.75rem;
-      background: var(--bg);
+    /* Cards */
+    .card {
+      background: var(--surface);
       border: 1px solid var(--border);
-      color: var(--text-sub);
-      padding: 2px 8px;
-      border-radius: 4px;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.2s ease;
     }
 
-    .project-anchor {
+    .card:hover {
+      box-shadow: var(--card-shadow-hover);
+      border-color: #cbd5e1;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .card-period {
       font-size: 0.85rem;
+      font-weight: 600;
       color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
+      background: #eff6ff;
+      padding: 2px 10px;
+      border-radius: 999px;
     }
 
-    .project-anchor:hover {
-      text-decoration: underline;
+    .card-subtitle {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .card-body {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .card-body ul {
+      margin-left: 20px;
+      margin-top: 8px;
+    }
+
+    /* Confidentiality Notice */
+    .notice {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background-color: var(--notice-bg);
+      border: 1px solid var(--notice-border);
+      color: var(--notice-text);
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    /* Tags */
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-size: 0.775rem;
+      background-color: #f1f5f9;
+      color: var(--text-muted);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: 500;
+      border: 1px solid var(--border);
+    }
+
+    /* Sports Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .sports-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .sports-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sports-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
 
     footer {
-      margin-top: 70px;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
       text-align: center;
-      font-size: 0.8rem;
-      color: var(--text-sub);
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      background: var(--surface);
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 2.1rem; }
+      .nav-links { display: none; } /* Mobile simplification */
     }
   </style>
 </head>
 <body>
 
-  <div class="wrapper">
-    <header>
-      <div class="badge-status">
-        <span></span> Apprenti Ingénieur (2024 — 2027)
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">Gautier Bareille</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#career">Career</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#sports">Sports</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- HOME / PRESENTATION -->
+    <section id="home" style="border-top: none;">
+      <div class="hero-badge">
+        <span></span> Graduate Engineering Apprentice (3EA)
       </div>
+      <h1>Electrical Engineering & Industrial Power Systems</h1>
+      <p class="hero-subtitle">Toulouse INP-ENSEEIHT | High-Voltage & Grid Systems</p>
       
-      <h1>Prénom Nom</h1>
-      <p class="role-title">Toulouse INP-ENSEEIHT — Spécialité 3EA</p>
-      
-      <p class="summary">
-        Formation d'ingénieur par apprentissage en Électronique, Énergie Électrique et Automatique. 
-        Orienté vers les systèmes matériels, la conversion d'énergie et le contrôle-commande.
+      <p class="hero-bio">
+        Following valuable leadership and operational experience in the French Air and Space Force, 
+        I transitioned to civil engineering to master electrical engineering and industrial automation. 
+        After completing my Advanced Technical Degree (BTS) with highest honors in industrial execution, 
+        I am now pursuing an MSc in Engineering at Toulouse INP-ENSEEIHT, specializing in Electronics, 
+        Electrical Energy, and Automation (3EA) through an apprenticeship program with Schneider Electric.
       </p>
 
-      <div class="action-links">
-        <a href="mailto:ton.adresse@exemple.fr" class="btn btn-contact">Contacter par email</a>
-        <a href="https://linkedin.com" target="_blank" class="btn">LinkedIn</a>
-        <a href="https://github.com" target="_blank" class="btn">GitHub</a>
-        <a href="CV.pdf" target="_blank" class="btn">Consulter mon CV</a>
+      <div class="btn-group">
+        <a href="CV_Gautier_Bareille_FR.pdf" target="_blank" class="btn btn-primary">
+          Download Resume (FR) &darr;
+        </a>
+        <a href="CV_Gautier_Bareille_EN.pdf" target="_blank" class="btn btn-primary">
+          Download Resume (EN) &darr;
+        </a>
+        <a href="#" target="_blank" class="btn btn-secondary">
+          Target Job Offer &rarr;
+        </a>
       </div>
-    </header>
+    </section>
 
-    <main>
-      <!-- Entreprise d'accueil -->
-      <section>
-        <h2>Expérience en entreprise</h2>
-        <div class="block-card">
-          <div class="block-top">
-            <span>[Nom de ton Entreprise]</span>
-            <span class="period">2024 — Présent</span>
-          </div>
-          <p class="subtitle">Apprenti Ingénieur [ex : Électronique / Systèmes Embarqués]</p>
-          <p class="block-desc">
-            [Description en 2-3 lignes de tes missions : ex. participation à la conception de bancs de tests, validation de cartes électroniques, rédaction de dossiers de spécification.]
+    <!-- CAREER (Post-Baccalaureate Path) -->
+    <section id="career">
+      <h2>Academic Career & Education</h2>
+      <p class="section-desc">My academic and military training pathway following the General Baccalaureate.</p>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">MSc in Engineering — 3EA (Apprenticeship Track)</span>
+          <span class="card-period">2026 — 2029</span>
+        </div>
+        <div class="card-subtitle">Toulouse INP-ENSEEIHT</div>
+        <div class="card-body">
+          Three-year Master's degree specializing in Electronics, Electrical Energy, and Automation. Core studies include power conversion, high-voltage networks, control systems, and industrial electrical architecture.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Higher Technical Degree (BTS) in Electrotechnics</span>
+          <span class="card-period">2024 — 2026</span>
+        </div>
+        <div class="card-subtitle">CFAI de Beauzelle (Toulouse)</div>
+        <div class="card-body">
+          Specialized in electrical network design, Caneco calculations, single-line/multi-line electrical schematics, power distribution dimensioning, and troubleshooting complex automated lines.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Non-Commissioned Officer Academy</span>
+          <span class="card-period">Oct 2023 — Jan 2024</span>
+        </div>
+        <div class="card-subtitle">French Air and Space Force (EFSOAA - Rochefort)</div>
+        <div class="card-body">
+          Intensive military and leadership training. Developed strict adherence to operational discipline, high-pressure execution, field organization, and team cohesion.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">French General Baccalaureate (Honors / Mention Bien)</span>
+          <span class="card-period">2023</span>
+        </div>
+        <div class="card-subtitle">Lycée Clémence Royer (Fonsorbes)</div>
+        <div class="card-body">
+          Majors in Mathematics and Physics & Chemistry.
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK EXPERIENCE -->
+    <section id="experience">
+      <h2>Work Experience</h2>
+      <p class="section-desc">Practical engineering and industrial operations background.</p>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Schneider Electric — High Voltage Substation Apprentice Engineer</span>
+          <span class="card-period">Sept 2026 — Sept 2029</span>
+        </div>
+        <div class="card-subtitle">Technical-Commercial & High-Voltage (HTB) Engineering</div>
+        <div class="card-body">
+          <ul>
+            <li>Preparation of technical and commercial quotations for High Voltage (HTB) substations.</li>
+            <li>Market analysis, customer specification assessment, and feasibility studies.</li>
+            <li>On-site project monitoring, contractor interface, and project management operations.</li>
+          </ul>
+        </div>
+        <div class="tags">
+          <span class="tag">HTB Substations</span>
+          <span class="tag">Power Distribution</span>
+          <span class="tag">Project Management</span>
+          <span class="tag">Technical Sales</span>
+        </div>
+      </div>
+
+      <div class="notice">
+        <strong>Confidentiality Disclosure:</strong> Detailed technical schematics and locations regarding military infrastructure operations at Cegelec Défense are strictly restricted under French Defense Non-Disclosure Protocols.
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Cegelec Défense — Electrical Systems Apprentice</span>
+          <span class="card-period">Sept 2024 — Aug 2026</span>
+        </div>
+        <div class="card-subtitle">Military & Critical Infrastructure Electrical Maintenance</div>
+        <div class="card-body">
+          <ul>
+            <li>Execution of specialized low and medium voltage electrical works in sensitive defense facilities.</li>
+            <li>Maintenance, testing, and servicing of complex electrical and backup power systems.</li>
+            <li>On-site engineering studies, routing assessment, and electrical cabinet modifications.</li>
+          </ul>
+        </div>
+        <div class="tags">
+          <span class="tag">Defense Contracting</span>
+          <span class="tag">Electrical Maintenance</span>
+          <span class="tag">Critical Systems</span>
+          <span class="tag">Commissioning</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Toulouse Carrelages — Delivery Supervisor & Logistics Lead</span>
+          <span class="card-period">Jan 2024 — Aug 2024</span>
+        </div>
+        <div class="card-subtitle">Operations & Team Coordination</div>
+        <div class="card-body">
+          Full management of daily dispatch schedules, direct supervision of temporary staff, inventory tracking, and warehouse flow optimization.
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL PROJECTS -->
+    <section id="projects">
+      <h2>Engineering Projects & Technical Workshops</h2>
+      <p class="section-desc">Practical sizing, implementation, and troubleshooting delivered during training.</p>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">400V Three-Phase Power Distribution & Infrastructure Sizing</span>
+          <span class="card-period">BTS Technical Project</span>
+        </div>
+        <div class="card-body">
+          Complete engineering design for the deployment of 400V three-phase industrial sockets. 
+          <ul>
+            <li>Calculation notes performed via Caneco BT to verify voltage drops, thermal constraints, and short-circuit currents.</li>
+            <li>Component sizing: selective circuit breakers, differential protections, and cable cross-sections.</li>
+            <li>Drafting comprehensive single-line and multi-line electrical diagrams.</li>
+          </ul>
+        </div>
+        <div class="tags">
+          <span class="tag">Caneco BT</span>
+          <span class="tag">400V Three-Phase</span>
+          <span class="tag">Single-Line Diagrams</span>
+          <span class="tag">Protection Sizing</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Full Electrical Rehabilitation of 2 Collaborative Workspaces</span>
+          <span class="card-period">BTS Technical Project</span>
+        </div>
+        <div class="card-body">
+          Comprehensive redesign and field deployment for modern commercial workspaces.
+          <ul>
+            <li>Pre-project engineering study: lighting level calculations (lux), circuit segregation, and panel capacity sizing.</li>
+            <li>Hands-on installation: raceway deployment, cable pulling, power and low-current (RJ45) connections.</li>
+            <li><em>Note: Specific structural routing details remain confidential in line with internal commissioning rules.</em></li>
+          </ul>
+        </div>
+        <div class="tags">
+          <span class="tag">Commercial Electrical</span>
+          <span class="tag">Building Automation</span>
+          <span class="tag">Commissioning</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Industrial Maintenance & System Diagnostics (CFA Workshops)</span>
+          <span class="card-period">Hands-on Workshops</span>
+        </div>
+        <div class="card-body">
+          Root-cause diagnosis and electrical repair on operational industrial equipment:
+          <ul>
+            <li><strong>Lifting Axis System:</strong> Diagnostic of electromechanical failures, motor brake circuit analysis, and variable speed drive parameterization.</li>
+            <li><strong>Automated Packaging Line:</strong> Troubleshooting automated sorting bowls (vibrating bowl feeders), industrial ovens, and Ecolregul process loops.</li>
+          </ul>
+        </div>
+        <div class="tags">
+          <span class="tag">Industrial Troubleshooting</span>
+          <span class="tag">VFDs</span>
+          <span class="tag">Vibrating Feeders</span>
+          <span class="tag">Ecolregul</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPORTS & INTERESTS -->
+    <section id="sports">
+      <h2>Sports & Competitive Background</h2>
+      <p class="section-desc">Key values of endurance, collective commitment, and analytical precision.</p>
+
+      <div class="grid-2">
+        <div class="sports-card">
+          <h3>Competitive Rugby (10+ Years)</h3>
+          <p>
+            Practicing competitive rugby since the age of 8. Selected for regional and departmental youth teams. Rugby has built my core values: strong collective solidarity, personal accountability, discipline under fatigue, and leadership on the field.
           </p>
         </div>
-      </section>
 
-      <!-- Formation académique -->
-      <section>
-        <h2>Formation académique</h2>
-        <div class="block-card">
-          <div class="block-top">
-            <span>Toulouse INP-ENSEEIHT</span>
-            <span class="period">2024 — 2027</span>
-          </div>
-          <p class="subtitle">Diplôme d'ingénieur 3EA en alternance</p>
-          <p class="block-desc">
-            Électronique analogique et numérique, modélisation de convertisseurs statiques, automatique continue et échantillonnée.
+        <div class="sports-card">
+          <h3>Motor Racing, Cycling & Precision Sports</h3>
+          <p>
+            Passionate follower of Formula 1 (strategy, mechanical engineering, and data analysis) and avid road cyclist. I also actively play competitive French pétanque, demanding focus, calm execution under pressure, and strategic risk management.
           </p>
         </div>
+      </div>
+    </section>
 
-        <div class="block-card">
-          <div class="block-top">
-            <span>[Établissement précédent : Lycée / IUT]</span>
-            <span class="period">2022 — 2024</span>
-          </div>
-          <p class="subtitle">[Ex : BUT GEII / CPGE TSI-PSI / BTS Électrotechnique]</p>
-          <p class="block-desc">
-            Bases théoriques et expérimentales en génie électrique, informatique industrielle et instrumentation.
-          </p>
-        </div>
-      </section>
-
-      <!-- Domaines techniques -->
-      <section>
-        <h2>Compétences & Outils</h2>
-        <div class="skills-container">
-          <div class="skill-box">
-            <h3>Électronique & Routage</h3>
-            <p>KiCad, Altium, schéma synoptique, routage de cartes, soudure CMS et tests oscilloscopes.</p>
-          </div>
-          <div class="skill-box">
-            <h3>Énergie & Puissance</h3>
-            <p>Convertisseurs DC-DC/AC-DC, LTspice, dimensionnement inductances et interrupteurs MOSFET/IGBT.</p>
-          </div>
-          <div class="skill-box">
-            <h3>Systèmes & Programmation</h3>
-            <p>C (bare-metal / STM32), Python, MATLAB/Simulink pour la simulation et la régulation.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Travaux et Projets -->
-      <section>
-        <h2>Projets & Réalisations</h2>
-
-        <div class="block-card">
-          <h3 class="project-header">Conception d'un hacheur abaisseur commandé</h3>
-          <p class="block-desc">
-            Modélisation sous LTspice, calcul des filtres de sortie, routage PCB sous KiCad et validation expérimentale du rendement sur charge variable.
-          </p>
-          <div class="p-tags">
-            <span class="p-tag">KiCad</span>
-            <span class="p-tag">LTspice</span>
-            <span class="p-tag">Puissance</span>
-          </div>
-          <a href="#" class="project-anchor">Voir la documentation &rarr;</a>
-        </div>
-
-        <div class="block-card">
-          <h3 class="project-header">Régulateur de vitesse pour moteur continu</h3>
-          <p class="block-desc">
-            Programmation C sur microcontrôleur d'une boucle d'asservissement en courant et en vitesse, mesure par capteur à effet Hall.
-          </p>
-          <div class="p-tags">
-            <span class="p-tag">C</span>
-            <span class="p-tag">STM32</span>
-            <span class="p-tag">Automatique</span>
-          </div>
-          <a href="#" class="project-anchor">Code & Schémas &rarr;</a>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>© 2026 Prénom Nom — Élève-Ingénieur ENSEEIHT</p>
-    </footer>
   </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Gautier Bareille — Toulouse INP-ENSEEIHT (3EA) / Schneider Electric</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">
+        Contact: <a href="mailto:gautier.bareille@icloud.com" style="color: var(--accent); text-decoration: none;">gautier.bareille@icloud.com</a> | +33 7 66 09 60 25
+      </p>
+    </div>
+  </footer>
 
 </body>
 </html>
