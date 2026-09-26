@@ -19,8 +19,8 @@
       --text: #0f172a;
       --text-muted: #475569;
       --border: #e2e8f0;
-      --card-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.02);
-      --card-shadow-hover: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+      --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.02);
+      --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
       --notice-bg: #fffbeb;
       --notice-border: #fde68a;
       --notice-text: #92400e;
@@ -43,6 +43,7 @@
       line-height: 1.6;
     }
 
+    /* Top Sticky Navigation */
     nav {
       position: sticky;
       top: 0;
@@ -58,7 +59,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 24px;
+      padding: 14px 24px;
+      position: relative;
     }
 
     .nav-logo {
@@ -69,21 +71,69 @@
       letter-spacing: -0.01em;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
+    /* Dropdown Component */
+    .dropdown {
+      position: relative;
+      user-select: none;
     }
 
-    .nav-links a {
+    .dropdown-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-btn:hover {
+      border-color: #cbd5e1;
+      background-color: #f1f5f9;
+    }
+
+    .dropdown-icon {
+      font-size: 0.75rem;
+      transition: transform 0.2s ease;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: calc(100% + 8px);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      min-width: 180px;
+      padding: 6px;
+      list-style: none;
+      z-index: 1100;
+    }
+
+    .dropdown-menu.show {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 14px;
+      color: var(--text);
       text-decoration: none;
-      color: var(--text-muted);
       font-size: 0.9rem;
       font-weight: 500;
-      transition: color 0.15s ease;
+      border-radius: 6px;
+      transition: background-color 0.15s ease, color 0.15s ease;
     }
 
-    .nav-links a:hover {
+    .dropdown-menu li a:hover {
+      background-color: #eff6ff;
       color: var(--primary);
     }
 
@@ -93,6 +143,7 @@
       padding: 0 24px;
     }
 
+    /* Hero Section */
     #home {
       padding: 80px 0 60px;
     }
@@ -181,6 +232,7 @@
       border-color: #cbd5e1;
     }
 
+    /* Sections */
     section {
       padding: 60px 0;
       border-top: 1px solid var(--border);
@@ -325,7 +377,6 @@
 
     @media (max-width: 640px) {
       h1 { font-size: 2.1rem; }
-      .nav-links { display: none; }
     }
   </style>
 </head>
@@ -335,13 +386,20 @@
   <nav>
     <div class="nav-container">
       <a href="#home" class="nav-logo">Gautier Bareille</a>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#career">Career</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#sports">Sports</a></li>
-      </ul>
+      
+      <!-- Dropdown Menu -->
+      <div class="dropdown">
+        <button class="dropdown-btn" id="menuBtn" aria-expanded="false" aria-haspopup="true">
+          Menu <span class="dropdown-icon">▼</span>
+        </button>
+        <ul class="dropdown-menu" id="menuList">
+          <li><a href="#home" class="menu-link">Home</a></li>
+          <li><a href="#career" class="menu-link">Career</a></li>
+          <li><a href="#experience" class="menu-link">Experience</a></li>
+          <li><a href="#projects" class="menu-link">Projects</a></li>
+          <li><a href="#sports" class="menu-link">Sports</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -379,12 +437,12 @@
 
       <div class="card">
         <div class="card-header">
-          <span class="card-title">Diplôme d'Ingénieur — 3EA (Apprenticeship Track)</span>
+          <span class="card-title">Engineering Degree — 3EA (Apprenticeship Track)</span>
           <span class="card-period">2026 — 2029</span>
         </div>
         <div class="card-subtitle">Toulouse INP-ENSEEIHT</div>
         <div class="card-body">
-          Specialization in Electronics, Electrical Energy, and Automation (3EA)[cite: 1]. Comprehensive training covering power networks, high-voltage systems, power conversion, grid integration, and industrial control.
+          Specialization in Electronics, Electrical Energy, and Automation (3EA)[cite: 1]. Comprehensive training covering power networks, high-voltage systems, static power converters, grid integration, and industrial control.
         </div>
       </div>
 
@@ -395,7 +453,7 @@
         </div>
         <div class="card-subtitle">CFAI de Beauzelle</div>
         <div class="card-body">
-          Hands-on and theoretical mastery of electrical installations, Caneco calculation notes, single-line and multi-line schematic design, cable dimensioning, industrial automation, and electrical troubleshooting[cite: 1].
+          Advanced technical degree covering electrical installation design, Caneco calculation notes, single-line and multi-line schematic drafting, cable sizing, industrial automation, and electrical diagnostics[cite: 1].
         </div>
       </div>
 
@@ -406,7 +464,7 @@
         </div>
         <div class="card-subtitle">Armée de l'Air et de l'Espace (Rochefort)</div>
         <div class="card-body">
-          Military and non-commissioned officer training. Fostered operational rigor, high adaptability, structured discipline, resilience under pressure, and collective values[cite: 1].
+          Military non-commissioned officer training. Instilled operational rigor, rapid adaptation, structured discipline, high resilience under pressure, and fundamental collective values[cite: 1].
         </div>
       </div>
 
@@ -425,7 +483,7 @@
     <!-- EXPERIENCE -->
     <section id="experience">
       <h2>Professional Experience</h2>
-      <p class="section-desc">Engineering and field operations within industrial and defense sectors.</p>
+      <p class="section-desc">Practical engineering, site supervision, and critical infrastructure maintenance.</p>
 
       <div class="card">
         <div class="card-header">
@@ -435,15 +493,15 @@
         <div class="card-subtitle">Technical-Commercial & High-Voltage Substations (Postes HTB)</div>
         <div class="card-body">
           <ul>
-            <li>Preparation of technical proposals and quotations for high-voltage (HTB) substations[cite: 1].</li>
-            <li>Market analysis and technical-economic feasibility assessments[cite: 1].</li>
-            <li>On-site operational follow-up, client relations, and project management[cite: 1].</li>
+            <li>Preparation of technical proposals and comprehensive commercial quotations for high-voltage (HTB) substations[cite: 1].</li>
+            <li>Market analysis, customer technical requirements review, and feasibility evaluations[cite: 1].</li>
+            <li>On-site operational monitoring, customer liaison, and overall project management[cite: 1].</li>
           </ul>
         </div>
         <div class="tags">
           <span class="tag">HTB Substations</span>
           <span class="tag">High Voltage</span>
-          <span class="tag">Quotations</span>
+          <span class="tag">Commercial Engineering</span>
           <span class="tag">Project Management</span>
         </div>
       </div>
@@ -460,8 +518,8 @@
         <div class="card-subtitle">Electrical Infrastructure & Critical Systems Maintenance</div>
         <div class="card-body">
           <ul>
-            <li>Execution of specialized electrical installations on defense and secure infrastructure[cite: 1].</li>
-            <li>Maintenance and testing of complex, critical power distribution equipment[cite: 1].</li>
+            <li>Execution of specialized low and medium voltage electrical works across defense and secure infrastructure[cite: 1].</li>
+            <li>Preventive and corrective maintenance on complex, critical power systems[cite: 1].</li>
             <li>On-site technical surveys, installation diagnostics, and system commissioning[cite: 1].</li>
           </ul>
         </div>
@@ -480,26 +538,26 @@
         </div>
         <div class="card-subtitle">Operations & Warehouse Management</div>
         <div class="card-body">
-          Supervised delivery schedules, led and organized temporary worker teams, oversaw warehouse logistics, and ensured rigorous stock coordination[cite: 1].
+          Supervised daily dispatch schedules, managed and organized temporary worker teams, oversaw warehouse logistics, and ensured rigorous stock coordination[cite: 1].
         </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
     <section id="projects">
-      <h2>Engineering Projects & Technical Lab Work</h2>
+      <h2>Engineering Projects & Technical Workshops</h2>
       <p class="section-desc">Practical sizing, design calculation, and industrial troubleshooting.</p>
 
       <div class="card">
         <div class="card-header">
           <span class="card-title">400V Three-Phase Power Supply Sizing & Installation</span>
-          <span class="card-period">BTS Project</span>
+          <span class="card-period">BTS Technical Project</span>
         </div>
         <div class="card-body">
-          Full technical engineering for the deployment of 400V three-phase industrial sockets:
+          Full technical engineering study for the deployment of 400V three-phase industrial sockets:
           <ul>
-            <li>Design calculations via Caneco BT: voltage drop verification, thermal stresses, and fault-current analysis.</li>
-            <li>Protection coordination: circuit breakers, residual current devices (RCDs), and cable sizing.</li>
+            <li>Comprehensive calculation notes performed via Caneco BT: voltage drop verification, thermal constraints, and prospective short-circuit currents.</li>
+            <li>Protection coordination: selective circuit breakers, residual current devices (RCDs), and optimal cable cross-section sizing.</li>
             <li>Production of complete single-line and multi-line electrical schematics.</li>
           </ul>
         </div>
@@ -514,13 +572,13 @@
       <div class="card">
         <div class="card-header">
           <span class="card-title">Complete Electrical Rehabilitation of Two Workspaces</span>
-          <span class="card-period">BTS Project</span>
+          <span class="card-period">BTS Technical Project</span>
         </div>
         <div class="card-body">
-          Turnkey engineering and on-site deployment:
+          Turnkey engineering and on-site deployment for modern commercial workspaces:
           <ul>
-            <li>Preliminary design study: lighting sizing, circuit distribution, panel board dimensioning, and safety compliance.</li>
-            <li>Physical implementation: containment routing, cable pulling, power socket wiring, and data connectivity.</li>
+            <li>Preliminary design study: lighting level calculations (lux), circuit segregation, electrical panel dimensioning, and safety compliance.</li>
+            <li>Hands-on installation: containment routing, cable pulling, power socket wiring, and data connectivity.</li>
             <li><em>Note: Specific project details and facility routing are omitted due to confidentiality commitments.</em></li>
           </ul>
         </div>
@@ -537,10 +595,10 @@
           <span class="card-period">CFA Practical Workshops</span>
         </div>
         <div class="card-body">
-          System-level troubleshooting and electrical repair on operational machinery:
+          Root-cause diagnosis and electrical troubleshooting on operational industrial equipment:
           <ul>
-            <li><strong>Industrial Hoist Axis:</strong> Fault analysis on hoisting drives, electromechanical brake control, and variable frequency drive (VFD) parameters.</li>
-            <li><strong>Automated Packaging Line:</strong> Diagnostics and tuning across vibrating bowl feeders, industrial ovens, and Ecolregul process control units.</li>
+            <li><strong>Industrial Hoist Axis:</strong> Fault analysis on electromechanical brake circuits, motor drive testing, and variable frequency drive (VFD) parameterization.</li>
+            <li><strong>Automated Packaging Line:</strong> Diagnostics and calibration across vibrating bowl feeders, industrial heating ovens, and Ecolregul process control loops.</li>
           </ul>
         </div>
         <div class="tags">
@@ -561,14 +619,14 @@
         <div class="sports-card">
           <h3>Competitive Rugby (10+ Years)</h3>
           <p>
-            Playing competitive rugby since age 8, including selections in regional and departmental youth teams[cite: 1]. Rugby is central to my mindset: it instills solid team spirit, personal accountability, collective resilience under pressure, and on-field leadership[cite: 1].
+            Playing competitive rugby since age 8, including selections in regional and departmental youth teams[cite: 1]. Rugby is central to my mindset: it instills solid team spirit, personal accountability, collective resilience under fatigue, and on-field leadership[cite: 1].
           </p>
         </div>
 
         <div class="sports-card">
           <h3>Formula 1, Cycling & Pétanque</h3>
           <p>
-            Keen interest in Formula 1 (race strategy, mechanical telemetry, and performance analysis) alongside regular road cycling[cite: 1]. I also play competitive pétanque, which demands composure, high mental focus, and tactical decision-making under match conditions.
+            Keen follower of Formula 1 (race strategy, mechanical telemetry, and performance analysis) alongside regular road cycling[cite: 1]. I also play competitive French pétanque, demanding composure, high mental focus, and tactical decision-making under match conditions.
           </p>
         </div>
       </div>
@@ -576,6 +634,7 @@
 
   </div>
 
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <p>© 2026 Gautier Bareille — Toulouse INP-ENSEEIHT (3EA) / Schneider Electric[cite: 1]</p>
@@ -584,6 +643,33 @@
       </p>
     </div>
   </footer>
+
+  <!-- Script for Dropdown behavior -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const menuList = document.getElementById('menuList');
+    const menuLinks = document.querySelectorAll('.menu-link');
+
+    // Toggle menu visibility
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menuList.classList.toggle('show');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!menuList.contains(e.target) && e.target !== menuBtn) {
+        menuList.classList.remove('show');
+      }
+    });
+
+    // Close menu after clicking an item
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuList.classList.remove('show');
+      });
+    });
+  </script>
 
 </body>
 </html>
