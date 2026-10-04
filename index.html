@@ -5,12 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gautier Bareille | Apprentice Engineer, ENSEEIHT 3EA & Schneider Electric</title>
 <meta name="description" content="E-portfolio of Gautier Bareille, apprentice engineer in electrical engineering at Toulouse INP-ENSEEIHT and Schneider Electric (HV substations).">
+<script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(!t)t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.dataset.theme=t})()</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f6f8fa;--surface:#fff;--border:#e2e8f0;--text:#0b1220;--muted:#52617a;--green:#00872e;--green-l:#00b33c;--green-bg:rgba(0,179,60,.09);--navy:#0f172a;--li:#0a66c2;--warn-bg:#fffbeb;--warn-bd:#fde68a;--warn:#92400e}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0b1220;--surface:#131c2e;--border:#24304a;--text:#eef2f8;--muted:#9aa8c0;--green:#3ddc74;--green-bg:rgba(61,220,116,.12);--warn-bg:#2a2210;--warn-bd:#5c4a14;--warn:#f5d68a}}
+:root[data-theme=dark]{--bg:#0b1220;--surface:#131c2e;--border:#24304a;--text:#eef2f8;--muted:#9aa8c0;--green:#3ddc74;--green-bg:rgba(61,220,116,.12);--warn-bg:#2a2210;--warn-bd:#5c4a14;--warn:#f5d68a;color-scheme:dark}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-padding-top:70px}
 body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
@@ -51,7 +52,7 @@ h3{font-size:1.08rem;font-weight:700}
 .btn:hover{border-color:var(--green-l)}
 .btn.li{background:var(--li);border-color:var(--li);color:#fff}
 .btn.cv{background:var(--green);border-color:var(--green);color:#fff}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .btn.cv{color:#04210f}}
+:root[data-theme=dark] .btn.cv{color:#04210f}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .go{text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;cursor:pointer;font-family:inherit;color:inherit}
 .go:hover{border-color:var(--green-l)}
@@ -77,6 +78,28 @@ h2.sec{font-size:1.2rem;margin:30px 0 12px}
 .back{display:inline-block;margin-bottom:18px;background:none;border:0;color:var(--muted);font:600 .85rem inherit;font-family:inherit;cursor:pointer}
 footer{border-top:1px solid var(--border);background:var(--surface);padding:30px 24px;text-align:center;color:var(--muted);font-size:.85rem}
 footer a{color:var(--green);font-weight:600;text-decoration:none;margin:0 8px}
+.c-sch{--c:#00b33c}.c-cge{--c:#d97706}.c-cfa{--c:#64748b}
+.card[class*="c-"]{border-left:4px solid var(--c)}
+.legend{display:flex;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);margin:-12px 0 18px}
+.key{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+.ill{background:var(--green-bg);border-radius:10px;height:110px;display:grid;place-items:center;margin-bottom:14px}
+.ill svg{width:150px;height:auto;stroke:var(--green);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.tools{display:flex;align-items:center;gap:8px}
+.theme{width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;display:grid;place-items:center}
+.theme:hover{border-color:var(--green-l)}
+.theme svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.theme .sun{display:none}
+:root[data-theme=dark] .theme .sun{display:block}
+:root[data-theme=dark] .theme .moon{display:none}
+.tl{position:relative;margin-left:14px;border-left:2px solid var(--border);display:flex;flex-direction:column;gap:18px;padding-left:26px}
+.tl>article{position:relative}
+.tl>article::before{content:"";position:absolute;left:-34px;top:28px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--c,var(--green-l))}
+.exp{display:grid;grid-template-columns:48px 1fr;gap:16px}
+.logo{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:.8rem;color:#fff;background:var(--c,var(--green-l))}
+.c-air{--c:#1e3a8a}.c-tc{--c:#78716c}
+.exp .small{font-size:.82rem;margin-top:10px;color:var(--warn)}
+.flag{width:30px;height:20px;border-radius:3px;border:1px solid var(--border);vertical-align:-4px;margin-right:10px}
+@media(max-width:780px){.exp{grid-template-columns:1fr}}
 @media(max-width:780px){.tabs{display:none}.menu{display:block}.hero-top{flex-direction:column-reverse;align-items:flex-start}.grid{grid-template-columns:1fr}h1{font-size:2.1rem}.hero{padding:24px}.star{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:no-preference){.panel.on{animation:in .25s ease-out}@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}}
 </style>
@@ -93,6 +116,8 @@ footer a{color:var(--green);font-weight:600;text-decoration:none;margin:0 8px}
    <li><button class="tab" data-go="passions">Passions</button></li>
    <li><button class="tab" data-go="civic">Civic Engagement</button></li>
   </ul>
+  <div class="tools">
+  <button id="themeBtn" class="theme" aria-label="Switch to dark mode" title="Light / dark mode"><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
   <div class="menu">
    <button id="menuBtn" aria-expanded="false">Menu ▾</button>
    <ul id="menuList">
@@ -103,6 +128,7 @@ footer a{color:var(--green);font-weight:600;text-decoration:none;margin:0 8px}
     <li><button data-go="passions">Passions</button></li>
     <li><button data-go="civic">Civic Engagement</button></li>
    </ul>
+  </div>
   </div>
  </div>
 </header>
@@ -129,41 +155,35 @@ footer a{color:var(--green);font-weight:600;text-decoration:none;margin:0 8px}
    <a class="btn li" href="https://www.linkedin.com/in/gautier-bareille-073538402/" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>
    <a class="btn cv" href="CV_Gautier_Bareille_EN.pdf" download>Download CV (EN)</a>
    <a class="btn cv" href="CV_Gautier_Bareille_FR.pdf" download>Download CV (FR)</a>
-   <button class="btn" data-go="career">Career tab</button>
    <a class="btn" href="mailto:gautier.bareille@icloud.com">Contact me</a>
   </div>
- </div>
- <div class="grid">
-  <button class="go" data-go="projects"><h3>Projects</h3><p>400 V sizing, workspace refurbishment, machine diagnostics, written in STAR format.</p></button>
-  <button class="go" data-go="career"><h3>Career</h3><p>Target job ad, CV and cover letter, LinkedIn, My Job Glasses interviews, pitch video.</p></button>
-  <button class="go" data-go="mobility"><h3>Mobility</h3><p>Three international projects and how they fit with Schneider Electric.</p></button>
-  <button class="go" data-go="passions"><h3>Passions</h3><p>Over ten years of competitive rugby, Formula 1, cycling and pétanque.</p></button>
  </div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects" class="panel">
  <h2>Projects</h2>
- <p class="lead">School and company projects, each written as Situation, Task, Action, Result.</p>
+ <p class="lead">Company and school projects, each written as Situation, Task, Action, Result.</p>
+ <p class="legend"><span><i class="key c-sch"></i>Schneider Electric</span><span><i class="key c-cge"></i>Cegelec Défense * (confidential)</span><span><i class="key c-cfa"></i>CFAI de Beauzelle</span></p>
  <div class="stack">
 
-  <article class="card">
-   <div class="row"><h3>Schneider Electric: HV substation offers</h3><span class="date">Sept 2026 to Sept 2029</span></div>
-   <p class="sub">Apprentice engineer, technical-commercial team</p>
+  <article class="card c-sch">
+   <div class="row"><h3>HV substation offers</h3><span class="date">Sept 2026 to Sept 2029</span></div>
+   <p class="sub">Schneider Electric, apprentice engineer, technical-commercial team</p>
    <dl class="star">
     <dt>Situation</dt><dd>Apprenticeship in the team that quotes and delivers high-voltage (HTB) substations.</dd>
     <dt>Task</dt><dd>Evaluate customer requirements and prepare technical and economic proposals.</dd>
     <dt>Action</dt><dd>Review customer specifications, analyse the market, run feasibility and cost studies, follow job sites in the field.</dd>
-    <dt>Result</dt><dd class="todo-inline">To complete with a concrete outcome (an offer delivered, a decision, a cost gap identified), once your tutor approves what can be shared.</dd>
+    <dt>Result</dt><dd>To complete with a concrete outcome (an offer delivered, a decision, a cost gap identified), once my tutor approves what can be shared.</dd>
    </dl>
    <div class="tags"><span class="tag">HTB substations</span><span class="tag">Cost estimation</span><span class="tag">Project management</span></div>
   </article>
 
-  <article class="card">
-   <div class="row"><h3>400 V three-phase power supply: sizing and installation</h3><span class="date">BTS project</span></div>
-   <p class="sub">CFAI de Beauzelle</p>
+  <article class="card c-cge">
+   <div class="row"><h3>400 V three-phase power supply: sizing and installation *</h3><span class="date">Sept 2024 to Aug 2026</span></div>
+   <p class="sub">Cegelec Défense, apprentice electrician</p>
    <dl class="star">
-    <dt>Situation</dt><dd>BTS Électrotechnique project: supply industrial 400 V three-phase outlets.</dd>
+    <dt>Situation</dt><dd>Apprenticeship mission: supply industrial 400 V three-phase outlets.</dd>
     <dt>Task</dt><dd>Size the installation so that it is safe, selective and compliant.</dd>
     <dt>Action</dt><dd>Wrote the calculation note in Caneco BT (voltage drop, thermal stress, prospective short-circuit current Icc), selected selective breakers, RCDs and cable cross-sections, drew single-line and multi-line schematics in CAD.</dd>
     <dt>Result</dt><dd>A complete, documented design file: calculation note plus schematics.</dd>
@@ -171,21 +191,23 @@ footer a{color:var(--green);font-weight:600;text-decoration:none;margin:0 8px}
    <div class="tags"><span class="tag">Caneco BT</span><span class="tag">Selectivity</span><span class="tag">Electrical CAD</span></div>
   </article>
 
-  <article class="card">
-   <div class="row"><h3>Electrical refurbishment of two collaborative workspaces</h3><span class="date">BTS project</span></div>
-   <p class="sub">Study and on-site work</p>
+  <article class="card c-cge">
+   <div class="row"><h3>Electrical refurbishment of two collaborative workspaces *</h3><span class="date">Sept 2024 to Aug 2026</span></div>
+   <p class="sub">Cegelec Défense, apprentice electrician</p>
    <dl class="star">
     <dt>Situation</dt><dd>Two professional work rooms needed a full electrical overhaul.</dd>
     <dt>Task</dt><dd>Design the new installation, then build it.</dd>
     <dt>Action</dt><dd>Calculated lighting levels (lux), drew up circuit tables and sized the distribution board. On site: mounted raceways, pulled cables, installed sockets and RJ45 network points.</dd>
-    <dt>Result</dt><dd>Two rooms refurbished, from study to commissioning. Building plans are not published (NDA).</dd>
+    <dt>Result</dt><dd>Two rooms refurbished, from study to commissioning.</dd>
    </dl>
    <div class="tags"><span class="tag">Lighting design</span><span class="tag">Distribution board</span><span class="tag">Network cabling</span></div>
   </article>
 
-  <article class="card">
-   <div class="row"><h3>Fault diagnosis on production machines</h3><span class="date">CFA workshops</span></div>
-   <p class="sub">Hoist axis and automated packaging line</p>
+  <div class="note"><b>* Confidential.</b> Missions carried out at Cegelec Défense are protected by defence confidentiality rules. No plans, schematics, sites or figures are shown here: only the skills and tools are described.</div>
+
+  <article class="card c-cfa">
+   <div class="row"><h3>Fault diagnosis on production machines</h3><span class="date">BTS workshops</span></div>
+   <p class="sub">CFAI de Beauzelle, hoist axis and automated packaging line</p>
    <dl class="star">
     <dt>Situation</dt><dd>Practical workshops on machines with real faults.</dd>
     <dt>Task</dt><dd>Find the cause of each fault and restore normal operation.</dd>
@@ -194,59 +216,84 @@ footer a{color:var(--green);font-weight:600;text-decoration:none;margin:0 8px}
    </dl>
    <div class="tags"><span class="tag">VFD</span><span class="tag">Fault-finding</span><span class="tag">Process control</span></div>
   </article>
-
-  <div class="note"><b>Confidentiality.</b> Missions carried out at Cegelec Défense (Sept 2024 to Aug 2026, low and medium voltage works and maintenance on critical defence installations) are protected: no schematics, layouts or sites are shown. Only the skills and tools are described.</div>
  </div>
 </section>
 
 <!-- CAREER -->
 <section id="career" class="panel">
  <h2>Career</h2>
- <p class="lead">One target job, one CV and cover letter tailored to it, my LinkedIn profile, two interviews and my pitch.</p>
+ <p class="lead">My documents, my professional experience, and the people who helped shape my plans.</p>
+ <div class="actions">
+  <a class="btn cv" href="CV_Gautier_Bareille_EN.pdf" download>Download CV (EN)</a>
+  <a class="btn cv" href="CV_Gautier_Bareille_FR.pdf" download>Download CV (FR)</a>
+  <a class="btn" href="Cover_Letter_Gautier_Bareille_EN.pdf" download>Download cover letter (EN)</a>
+  <a class="btn li" href="https://www.linkedin.com/in/gautier-bareille-073538402/" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>
+ </div>
+ <p style="font-size:.88rem;color:var(--muted);margin-top:12px">Both CVs list my apprenticeship at Schneider Electric as my current position.</p>
 
- <h2 class="sec">1. Target job ad</h2>
+ <h2 class="sec">Professional experience</h2>
+ <div class="tl">
+  <article class="card c-sch">
+   <div class="exp"><div class="logo" aria-hidden="true">SE</div><div>
+    <div class="row"><h3>Apprentice engineer</h3><span class="date">Since Sept 2026</span></div>
+    <p class="sub">Schneider Electric, technical-commercial team, HV substations (HTB)</p>
+    <ul><li>Evaluate HV substation requirements and prepare technical and commercial offers.</li><li>Analyse the market, review customer needs and run economic feasibility studies.</li><li>Follow job sites and coordinate in the field across the project lifecycle.</li></ul>
+    <div class="tags"><span class="tag">HTB substations</span><span class="tag">Cost estimation</span><span class="tag">Project management</span></div>
+   </div></div>
+  </article>  <article class="card c-cge">
+   <div class="exp"><div class="logo" aria-hidden="true">CD</div><div>
+    <div class="row"><h3>Apprentice electrician *</h3><span class="date">Sept 2024 to Aug 2026</span></div>
+    <p class="sub">Cegelec Défense, electrical infrastructure and critical systems</p>
+    <ul><li>Carried out low and medium voltage electrical works on critical defence installations.</li><li>Performed preventive and corrective maintenance on high-reliability power distribution and backup systems.</li><li>Ran field studies and site measurements, modified panels and assisted with commissioning.</li></ul>
+    <p class="small">* Confidential: only skills and tools are described, never sites, plans or figures.</p>
+    <div class="tags"><span class="tag">Critical systems</span><span class="tag">Maintenance</span><span class="tag">Commissioning</span></div>
+   </div></div>
+  </article>
+  <article class="card c-tc">
+   <div class="exp"><div class="logo" aria-hidden="true">TC</div><div>
+    <div class="row"><h3>Logistics lead and staff supervisor</h3><span class="date">Jan 2024 to Aug 2024</span></div>
+    <p class="sub">Toulouse Carrelages, warehouse and delivery operations</p>
+    <ul><li>Managed dispatch workflows and led temporary logistics teams.</li><li>Optimised inventory rotation.</li><li>Enforced strict on-time delivery tracking.</li></ul>
+    <div class="tags"><span class="tag">Team leadership</span><span class="tag">Logistics</span><span class="tag">Delivery tracking</span></div>
+   </div></div>
+  </article>
+  <article class="card c-air">
+   <div class="exp"><div class="logo" aria-hidden="true">AAE</div><div>
+    <div class="row"><h3>Non-commissioned officer training</h3><span class="date">Oct 2023 to Jan 2024</span></div>
+    <p class="sub">Armée de l'Air et de l'Espace, EFSOAA, Rochefort</p>
+    <ul><li>Training school for non-commissioned officers of the French Air and Space Force.</li><li>Operational rigor, discipline and accountability, including quick execution under stress.</li><li>Collective values and team cohesion in a military unit.</li></ul>
+    <div class="tags"><span class="tag">Leadership</span><span class="tag">Discipline</span><span class="tag">Team cohesion</span></div>
+   </div></div>
+  </article>
+ </div>
+
+ <h2 class="sec">Target job ad</h2>
  <div class="todo"><b>To complete:</b> add the link or a screenshot of the real job ad you would apply for (save the image as <code>job-ad.png</code> and display it here with an <code>&lt;img&gt;</code> tag).</div>
 
- <h2 class="sec">2. CV and cover letter (English), tailored to the ad</h2>
- <div class="card">
-  <p>My apprenticeship at Schneider Electric is listed as my current professional experience. Both CVs tell the same story as my LinkedIn profile and my pitch.</p>
-  <div class="actions" style="margin-top:16px">
-   <a class="btn cv" href="CV_Gautier_Bareille_EN.pdf" download>Download CV (EN)</a>
-   <a class="btn cv" href="CV_Gautier_Bareille_FR.pdf" download>Download CV (FR)</a>
-   <a class="btn" href="Cover_Letter_Gautier_Bareille_EN.pdf" download>Download cover letter (EN)</a>
-  </div>
- </div>
-
- <h2 class="sec">3. LinkedIn profile</h2>
- <div class="card">
-  <p>Up to date, with my apprenticeship at Schneider Electric as my current position.</p>
-  <div class="actions" style="margin-top:16px"><a class="btn li" href="https://www.linkedin.com/in/gautier-bareille-073538402/" target="_blank" rel="noopener noreferrer">Open my LinkedIn profile</a></div>
- </div>
-
- <h2 class="sec">4. My Job Glasses interviews</h2>
+ <h2 class="sec">My Job Glasses interviews</h2>
  <div class="grid">
   <article class="card"><h3>Interview 1</h3>
    <dl class="star"><dt>Who</dt><dd>Name, job title, company</dd><dt>Why</dt><dd>Why I chose this person</dd><dt>Learnt</dt><dd>Two or three key takeaways</dd></dl></article>
   <article class="card"><h3>Interview 2</h3>
    <dl class="star"><dt>Who</dt><dd>Name, job title, company</dd><dt>Why</dt><dd>Why I chose this person</dd><dt>Learnt</dt><dd>Two or three key takeaways</dd></dl></article>
  </div>
- <p class="lead" style="margin-top:8px">Both interviews must be held outside my family, my tutor and my team.</p>
+ <p style="font-size:.88rem;color:var(--muted);margin-top:10px">Both interviews must be held outside my family, my tutor and my team.</p>
 
- <h2 class="sec">5. Elevator pitch (3 minutes, in English)</h2>
+ <h2 class="sec">Elevator pitch (3 minutes, in English)</h2>
  <div class="video">Video to add here: present, very brief past, future, plus my three mobility projects.<br>Replace this box with a &lt;video controls src="pitch.mp4"&gt; tag or a YouTube embed.</div>
 </section>
 
 <!-- MOBILITY -->
 <section id="mobility" class="panel">
  <h2>Mobility</h2>
- <p class="lead">Three international projects for the 17-week mobility in S9, with the reasons for each and how they fit with Schneider Electric.</p>
+ <p class="lead">Three international projects for the mobility period in S9 (9 to 12 weeks for apprentices), with the reasons for each and how they fit with Schneider Electric.</p>
  <div class="stack">
-  <article class="card"><h3>Project 1</h3>
-   <dl class="star"><dt>Destination</dt><dd>Country, city, entity</dd><dt>Reasons</dt><dd>What I want to learn there and why</dd><dt>Feasibility</dt><dd>How it fits with Schneider Electric (site, team, timing)</dd></dl></article>
-  <article class="card"><h3>Project 2</h3>
-   <dl class="star"><dt>Destination</dt><dd>Country, city, entity</dd><dt>Reasons</dt><dd>What I want to learn there and why</dd><dt>Feasibility</dt><dd>How it fits with Schneider Electric (site, team, timing)</dd></dl></article>
-  <article class="card"><h3>Project 3</h3>
-   <dl class="star"><dt>Destination</dt><dd>Country, city, entity</dd><dt>Reasons</dt><dd>What I want to learn there and why</dd><dt>Feasibility</dt><dd>How it fits with Schneider Electric (site, team, timing)</dd></dl></article>
+  <article class="card"><h3><svg class="flag" viewBox="0 0 38 26" role="img" aria-label="United States flag"><rect width="38" height="26" fill="#fff"/><rect y="0" width="38" height="2" fill="#b22234"/><rect y="4" width="38" height="2" fill="#b22234"/><rect y="8" width="38" height="2" fill="#b22234"/><rect y="12" width="38" height="2" fill="#b22234"/><rect y="16" width="38" height="2" fill="#b22234"/><rect y="20" width="38" height="2" fill="#b22234"/><rect y="24" width="38" height="2" fill="#b22234"/><rect width="16" height="14" fill="#3c3b6e"/></svg>Project 1: Boston, United States</h3>
+   <dl class="star"><dt>Destination</dt><dd>Schneider Electric USA, Boston area, working on high-voltage (HTB) substations.</dd><dt>Reasons</dt><dd>The same products and the same business as my apprenticeship, on the North American market: ANSI/IEEE standards instead of IEC, and different customer and utility practices. It would also push my professional English towards the B2+ level required in S9.</dd><dt>Feasibility</dt><dd>The closest fit with my employer, since it is the same company and the same business line. To confirm with my tutor and the mobility team: the position, the dates and the visa.</dd></dl></article>
+  <article class="card"><h3><svg class="flag" viewBox="0 0 38 26" role="img" aria-label="Singapore flag"><rect width="38" height="13" fill="#ed2939"/><rect y="13" width="38" height="13" fill="#fff"/><circle cx="10" cy="6.5" r="4.5" fill="#fff"/><circle cx="12" cy="6.5" r="4" fill="#ed2939"/><g fill="#fff"><circle cx="15" cy="3.2" r=".9"/><circle cx="18" cy="5.5" r=".9"/><circle cx="17" cy="9" r=".9"/><circle cx="13" cy="9.6" r=".9"/><circle cx="14" cy="6.4" r=".9"/></g></svg>Project 2: Singapore</h3>
+   <dl class="star"><dt>Destination</dt><dd>Schneider Electric, Singapore.</dd><dt>Reasons</dt><dd>Asia-Pacific is a fast-growing energy market with dense urban grids. I want to see how an electrical project is run in another region and another working culture.</dd><dt>Feasibility</dt><dd>To confirm with my tutor: which Schneider Electric team based there works on high-voltage or grid projects, and whether the mission matches my HTB work.</dd></dl></article>
+  <article class="card"><h3><svg class="flag" viewBox="0 0 38 26" role="img" aria-label="Hungary flag"><rect width="38" height="9" fill="#ce2939"/><rect y="8.7" width="38" height="8.7" fill="#fff"/><rect y="17.3" width="38" height="8.7" fill="#477050"/></svg>Project 3: Budapest, Hungary</h3>
+   <dl class="star"><dt>Destination</dt><dd>Schneider Electric, Budapest.</dd><dt>Reasons</dt><dd>A European destination that keeps IEC standards, so I can work in an international team with a smaller technical gap and simpler logistics.</dd><dt>Feasibility</dt><dd>To confirm with my tutor: which Schneider Electric team based there could host me, and whether the mission relates to HV substations.</dd></dl></article>
  </div>
 </section>
 
@@ -254,14 +301,26 @@ footer a{color:var(--green);font-weight:600;text-decoration:none;margin:0 8px}
 <section id="passions" class="panel">
  <h2>Passions</h2>
  <p class="lead">What I do outside of work, and what it teaches me.</p>
- <div class="stack">
+ <div class="grid">
   <article class="card">
+ <div class="ill" aria-hidden="true"><svg viewBox="0 0 120 80"><g transform="rotate(-25 60 40)"><ellipse cx="60" cy="40" rx="40" ry="22"/><path d="M24 40H96M50 33V47M60 32V48M70 33V47"/><path d="M28 28Q36 40 28 52M92 28Q84 40 92 52"/></g></svg></div>
    <div class="row"><h3>Competitive rugby</h3><span class="date">10+ years</span></div>
-   <p>I have played in competitive leagues since the age of 8, with selections in regional and departmental youth teams. Rugby taught me team solidarity, resilience when tired, and personal accountability on the field. These are the habits I rely on in a project team.</p>
+   <p style="margin-top:6px">I have played in competitive leagues since the age of 8, with selections in regional and departmental youth teams. Rugby taught me team solidarity, resilience when tired and personal accountability on the field.</p>
   </article>
   <article class="card">
-   <h3>Formula 1, cycling and pétanque</h3>
-   <p style="margin-top:6px">I follow Formula 1 for its race strategy, aerodynamics and telemetry analysis, and I ride on the road regularly. I also compete in pétanque, which demands calm and precise execution under pressure.</p>
+ <div class="ill" aria-hidden="true"><svg viewBox="0 0 120 80"><circle cx="30" cy="56" r="10"/><circle cx="92" cy="56" r="10"/><path d="M12 54L24 54L40 44L62 42L74 48L104 48L110 54Z"/><path d="M8 36H24V52M100 48L114 48"/></svg></div>
+   <h3>Formula 1</h3>
+   <p style="margin-top:6px">I follow Formula 1 for its race strategy, its aerodynamics and the analysis of vehicle telemetry: a sport where engineering decides the result.</p>
+  </article>
+  <article class="card">
+ <div class="ill" aria-hidden="true"><svg viewBox="0 0 120 80"><circle cx="32" cy="54" r="16"/><circle cx="92" cy="54" r="16"/><path d="M32 54L50 32H82L92 54M50 32L58 54H32M58 54L82 32M44 29H56M82 32L88 24H96"/></svg></div>
+   <h3>Road cycling</h3>
+   <p style="margin-top:6px">I ride on the road regularly. It is endurance and discipline, and it keeps me balanced alongside work and studies.</p>
+  </article>
+  <article class="card">
+ <div class="ill" aria-hidden="true"><svg viewBox="0 0 120 80"><circle cx="40" cy="46" r="18"/><circle cx="40" cy="46" r="9"/><circle cx="84" cy="52" r="14"/><circle cx="84" cy="52" r="7"/><circle cx="66" cy="24" r="5"/></svg></div>
+   <h3>Pétanque</h3>
+   <p style="margin-top:6px">I compete in pétanque, which demands calm, precise execution under pressure and a good sense of risk management.</p>
   </article>
  </div>
 </section>
@@ -269,11 +328,18 @@ footer a{color:var(--green);font-weight:600;text-decoration:none;margin:0 8px}
 <!-- CIVIC -->
 <section id="civic" class="panel">
  <h2>Civic Engagement</h2>
- <p class="lead">40 hours of civic engagement (RSE) are required in S9. Hours completed or planned appear here.</p>
- <div class="card">
-  <p><b style="color:var(--text)">Planned or completed:</b></p>
-  <ul><li>Association or action, role, number of hours, dates (to complete)</li></ul>
- </div>
+ <p class="lead">40 hours of civic engagement (RSE) are required in S9.</p>
+ <article class="card">
+  <div class="row"><h3>Rugby coach, under-10 team (U10)</h3><span class="date">Every week</span></div>
+  <p class="sub">Volunteer coaching</p>
+  <dl class="star">
+   <dt>Training</dt><dd>Every Tuesday evening.</dd>
+   <dt>Matches</dt><dd>Every Saturday morning.</dd>
+   <dt>My role</dt><dd>I coach a group of children under 10: I run the training sessions and guide the team during matches.</dd>
+   <dt>What I pass on</dt><dd>Team spirit, respect for the rules and for others, and the pleasure of playing together, the values rugby gave me.</dd>
+   <dt>Hours</dt><dd>To complete: club name and number of hours logged.</dd>
+  </dl>
+ </article>
 </section>
 
 </main>
@@ -301,312 +367,10 @@ document.querySelectorAll('[data-go]').forEach(el=>{
 mbtn.addEventListener('click',e=>{e.stopPropagation();const o=list.classList.toggle('open');mbtn.setAttribute('aria-expanded',o)});
 document.addEventListener('click',()=>list.classList.remove('open'));
 window.addEventListener('popstate',()=>show(location.hash.slice(1),false));
-show(location.hash.slice(1),false);
-</script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gautier Bareille | Apprentice Engineer, ENSEEIHT 3EA & Schneider Electric</title>
-<meta name="description" content="E-portfolio of Gautier Bareille, apprentice engineer in electrical engineering at Toulouse INP-ENSEEIHT and Schneider Electric (HV substations).">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#f6f8fa;--surface:#fff;--border:#e2e8f0;--text:#0b1220;--muted:#52617a;--green:#00872e;--green-l:#00b33c;--green-bg:rgba(0,179,60,.09);--navy:#0f172a;--li:#0a66c2;--warn-bg:#fffbeb;--warn-bd:#fde68a;--warn:#92400e}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0b1220;--surface:#131c2e;--border:#24304a;--text:#eef2f8;--muted:#9aa8c0;--green:#3ddc74;--green-bg:rgba(61,220,116,.12);--warn-bg:#2a2210;--warn-bd:#5c4a14;--warn:#f5d68a}}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-padding-top:70px}
-body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--green-l);outline-offset:2px}
-header{position:sticky;top:0;z-index:50;background:var(--surface);border-bottom:1px solid var(--border)}
-.nav{max-width:920px;margin:0 auto;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none;cursor:pointer}
-.mono{width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:.75rem;border:2px solid var(--green-l)}
-.tabs{display:flex;gap:4px;list-style:none}
-.tab{background:none;border:0;padding:7px 12px;border-radius:8px;font:600 .85rem inherit;font-family:inherit;color:var(--muted);cursor:pointer}
-.tab:hover{color:var(--text)}
-.tab.on{color:var(--green);background:var(--green-bg)}
-.menu{display:none;position:relative}
-.menu>button{background:var(--surface);border:1px solid var(--border);padding:7px 14px;border-radius:999px;font:600 .85rem inherit;font-family:inherit;color:var(--text);cursor:pointer}
-.menu ul{display:none;position:absolute;right:0;top:calc(100% + 8px);background:var(--surface);border:1px solid var(--border);border-radius:12px;min-width:190px;padding:6px;list-style:none}
-.menu ul.open{display:block}
-.menu li button{width:100%;text-align:left;background:none;border:0;padding:10px 14px;border-radius:8px;font:600 .85rem inherit;font-family:inherit;color:var(--muted);cursor:pointer}
-.menu li button.on{background:var(--green-bg);color:var(--green)}
-main{max-width:920px;width:100%;margin:0 auto;padding:36px 24px 72px;flex:1}
-.panel{display:none}
-.panel.on{display:block}
-h1{font-size:2.6rem;font-weight:800;letter-spacing:-.035em;line-height:1.12}
-h2{font-size:1.6rem;font-weight:800;letter-spacing:-.02em}
-h3{font-size:1.08rem;font-weight:700}
-.lead{color:var(--muted);margin:4px 0 26px}
-.hero{background:var(--surface);border:1px solid var(--border);border-top:4px solid var(--green-l);border-radius:18px;padding:36px;margin-bottom:24px}
-.hero-top{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:22px}
-.role{color:var(--green);font-weight:700;font-size:1.1rem;margin-top:8px}
-.school{color:var(--muted);font-size:.95rem}
-.photo{width:120px;height:120px;border-radius:22px;background:var(--bg);border:1px solid var(--border);flex-shrink:0;overflow:hidden;display:grid;place-items:center;font-weight:800;color:var(--muted)}
-.photo img{width:100%;height:100%;object-fit:cover}
-.bio{max-width:68ch;margin-bottom:22px}
-.uvp{border-left:4px solid var(--green-l);background:var(--green-bg);padding:12px 18px;border-radius:0 10px 10px 0;margin-bottom:24px;max-width:68ch}
-.uvp b{display:block;margin-bottom:2px}
-.actions{display:flex;gap:10px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font:600 .875rem inherit;font-family:inherit;text-decoration:none;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer}
-.btn:hover{border-color:var(--green-l)}
-.btn.li{background:var(--li);border-color:var(--li);color:#fff}
-.btn.cv{background:var(--green);border-color:var(--green);color:#fff}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .btn.cv{color:#04210f}}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.go{text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;cursor:pointer;font-family:inherit;color:inherit}
-.go:hover{border-color:var(--green-l)}
-.go h3{margin-bottom:4px}
-.go p{font-size:.88rem;color:var(--muted);line-height:1.5}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px}
-.stack{display:flex;flex-direction:column;gap:16px}
-.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
-.date{font:600 .75rem 'JetBrains Mono',monospace;color:var(--green);background:var(--green-bg);padding:2px 10px;border-radius:999px}
-.sub{font-weight:600;color:var(--muted);font-size:.9rem;margin-bottom:10px}
-.card p,.card li{color:var(--muted);font-size:.93rem}
-.card ul{margin:8px 0 0 20px}
-.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
-.tag{font:500 .75rem 'JetBrains Mono',monospace;background:var(--bg);border:1px solid var(--border);padding:3px 10px;border-radius:6px;color:var(--muted)}
-.star{display:grid;grid-template-columns:104px 1fr;gap:6px 14px;margin-top:10px;font-size:.92rem}
-.star dt{font-weight:700;color:var(--text)}
-.star dd{color:var(--muted)}
-.note{background:var(--warn-bg);border:1px solid var(--warn-bd);color:var(--warn);border-radius:12px;padding:14px 18px;font-size:.88rem}
-.todo{border:2px dashed var(--border);border-radius:12px;padding:16px 18px;color:var(--muted);font-size:.9rem}
-.todo b{color:var(--text)}
-h2.sec{font-size:1.2rem;margin:30px 0 12px}
-.video{aspect-ratio:16/9;width:100%;border-radius:12px;background:var(--navy);display:grid;place-items:center;color:#cbd5e1;font-size:.9rem;text-align:center;padding:20px}
-.back{display:inline-block;margin-bottom:18px;background:none;border:0;color:var(--muted);font:600 .85rem inherit;font-family:inherit;cursor:pointer}
-footer{border-top:1px solid var(--border);background:var(--surface);padding:30px 24px;text-align:center;color:var(--muted);font-size:.85rem}
-footer a{color:var(--green);font-weight:600;text-decoration:none;margin:0 8px}
-@media(max-width:780px){.tabs{display:none}.menu{display:block}.hero-top{flex-direction:column-reverse;align-items:flex-start}.grid{grid-template-columns:1fr}h1{font-size:2.1rem}.hero{padding:24px}.star{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:no-preference){.panel.on{animation:in .25s ease-out}@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}}
-</style>
-</head>
-<body>
-<header>
- <div class="nav">
-  <a class="brand" data-go="welcome" tabindex="0"><span class="mono">GB</span><span>Gautier Bareille</span></a>
-  <ul class="tabs">
-   <li><button class="tab" data-go="welcome">Welcome</button></li>
-   <li><button class="tab" data-go="projects">Projects</button></li>
-   <li><button class="tab" data-go="career">Career</button></li>
-   <li><button class="tab" data-go="mobility">Mobility</button></li>
-   <li><button class="tab" data-go="passions">Passions</button></li>
-   <li><button class="tab" data-go="civic">Civic Engagement</button></li>
-  </ul>
-  <div class="menu">
-   <button id="menuBtn" aria-expanded="false">Menu ▾</button>
-   <ul id="menuList">
-    <li><button data-go="welcome">Welcome</button></li>
-    <li><button data-go="projects">Projects</button></li>
-    <li><button data-go="career">Career</button></li>
-    <li><button data-go="mobility">Mobility</button></li>
-    <li><button data-go="passions">Passions</button></li>
-    <li><button data-go="civic">Civic Engagement</button></li>
-   </ul>
-  </div>
- </div>
-</header>
-
-<main>
-
-<!-- WELCOME -->
-<section id="welcome" class="panel on">
- <div class="hero">
-  <div class="hero-top">
-   <div>
-    <h1>Gautier Bareille</h1>
-    <p class="role">Apprentice engineer, electrical power systems</p>
-    <p class="school">Toulouse INP-ENSEEIHT (N7), 3EA track, L3 FISA &nbsp;|&nbsp; Schneider Electric, HV substations</p>
-   </div>
-   <div class="photo"><img src="image0.png" alt="Portrait of Gautier Bareille" onerror="this.remove()"></div>
-  </div>
-  <p class="bio">I am an N7 engineering student and, at the same time, an apprentice at Schneider Electric. After serving in the French Air and Space Force, I went back to school to build a career in electrical engineering: a BTS Électrotechnique in 2026, then the 3EA apprenticeship programme at ENSEEIHT. Two years as an apprentice electrician at Cegelec Défense taught me what a power installation looks like on site, before I moved to the commercial and technical side of high-voltage substations.</p>
-  <div class="uvp">
-   <b>What I bring</b>
-   Field experience on critical electrical installations, military discipline, and the technical-commercial skills to turn a customer need into a priced HV substation offer.
-  </div>
-  <div class="actions">
-   <a class="btn li" href="https://www.linkedin.com/in/gautier-bareille-073538402/" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>
-   <a class="btn cv" href="CV_Gautier_Bareille_EN.pdf" download>Download CV (EN)</a>
-   <a class="btn cv" href="CV_Gautier_Bareille_FR.pdf" download>Download CV (FR)</a>
-   <button class="btn" data-go="career">Career tab</button>
-   <a class="btn" href="mailto:gautier.bareille@icloud.com">Contact me</a>
-  </div>
- </div>
- <div class="grid">
-  <button class="go" data-go="projects"><h3>Projects</h3><p>400 V sizing, workspace refurbishment, machine diagnostics, written in STAR format.</p></button>
-  <button class="go" data-go="career"><h3>Career</h3><p>Target job ad, CV and cover letter, LinkedIn, My Job Glasses interviews, pitch video.</p></button>
-  <button class="go" data-go="mobility"><h3>Mobility</h3><p>Three international projects and how they fit with Schneider Electric.</p></button>
-  <button class="go" data-go="passions"><h3>Passions</h3><p>Over ten years of competitive rugby, Formula 1, cycling and pétanque.</p></button>
- </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects" class="panel">
- <h2>Projects</h2>
- <p class="lead">School and company projects, each written as Situation, Task, Action, Result.</p>
- <div class="stack">
-
-  <article class="card">
-   <div class="row"><h3>Schneider Electric: HV substation offers</h3><span class="date">Sept 2026 to Sept 2029</span></div>
-   <p class="sub">Apprentice engineer, technical-commercial team</p>
-   <dl class="star">
-    <dt>Situation</dt><dd>Apprenticeship in the team that quotes and delivers high-voltage (HTB) substations.</dd>
-    <dt>Task</dt><dd>Evaluate customer requirements and prepare technical and economic proposals.</dd>
-    <dt>Action</dt><dd>Review customer specifications, analyse the market, run feasibility and cost studies, follow job sites in the field.</dd>
-    <dt>Result</dt><dd class="todo-inline">To complete with a concrete outcome (an offer delivered, a decision, a cost gap identified), once your tutor approves what can be shared.</dd>
-   </dl>
-   <div class="tags"><span class="tag">HTB substations</span><span class="tag">Cost estimation</span><span class="tag">Project management</span></div>
-  </article>
-
-  <article class="card">
-   <div class="row"><h3>400 V three-phase power supply: sizing and installation</h3><span class="date">BTS project</span></div>
-   <p class="sub">CFAI de Beauzelle</p>
-   <dl class="star">
-    <dt>Situation</dt><dd>BTS Électrotechnique project: supply industrial 400 V three-phase outlets.</dd>
-    <dt>Task</dt><dd>Size the installation so that it is safe, selective and compliant.</dd>
-    <dt>Action</dt><dd>Wrote the calculation note in Caneco BT (voltage drop, thermal stress, prospective short-circuit current Icc), selected selective breakers, RCDs and cable cross-sections, drew single-line and multi-line schematics in CAD.</dd>
-    <dt>Result</dt><dd>A complete, documented design file: calculation note plus schematics.</dd>
-   </dl>
-   <div class="tags"><span class="tag">Caneco BT</span><span class="tag">Selectivity</span><span class="tag">Electrical CAD</span></div>
-  </article>
-
-  <article class="card">
-   <div class="row"><h3>Electrical refurbishment of two collaborative workspaces</h3><span class="date">BTS project</span></div>
-   <p class="sub">Study and on-site work</p>
-   <dl class="star">
-    <dt>Situation</dt><dd>Two professional work rooms needed a full electrical overhaul.</dd>
-    <dt>Task</dt><dd>Design the new installation, then build it.</dd>
-    <dt>Action</dt><dd>Calculated lighting levels (lux), drew up circuit tables and sized the distribution board. On site: mounted raceways, pulled cables, installed sockets and RJ45 network points.</dd>
-    <dt>Result</dt><dd>Two rooms refurbished, from study to commissioning. Building plans are not published (NDA).</dd>
-   </dl>
-   <div class="tags"><span class="tag">Lighting design</span><span class="tag">Distribution board</span><span class="tag">Network cabling</span></div>
-  </article>
-
-  <article class="card">
-   <div class="row"><h3>Fault diagnosis on production machines</h3><span class="date">CFA workshops</span></div>
-   <p class="sub">Hoist axis and automated packaging line</p>
-   <dl class="star">
-    <dt>Situation</dt><dd>Practical workshops on machines with real faults.</dd>
-    <dt>Task</dt><dd>Find the cause of each fault and restore normal operation.</dd>
-    <dt>Action</dt><dd>Hoist axis: traced faults in the drive, the brake holding circuit and the variable frequency drive settings. Packaging line: adjusted vibrating bowl feeders, curing ovens and Ecolregul process regulators.</dd>
-    <dt>Result</dt><dd>Machines diagnosed and brought back into service.</dd>
-   </dl>
-   <div class="tags"><span class="tag">VFD</span><span class="tag">Fault-finding</span><span class="tag">Process control</span></div>
-  </article>
-
-  <div class="note"><b>Confidentiality.</b> Missions carried out at Cegelec Défense (Sept 2024 to Aug 2026, low and medium voltage works and maintenance on critical defence installations) are protected: no schematics, layouts or sites are shown. Only the skills and tools are described.</div>
- </div>
-</section>
-
-<!-- CAREER -->
-<section id="career" class="panel">
- <h2>Career</h2>
- <p class="lead">One target job, one CV and cover letter tailored to it, my LinkedIn profile, two interviews and my pitch.</p>
-
- <h2 class="sec">1. Target job ad</h2>
- <div class="todo"><b>To complete:</b> add the link or a screenshot of the real job ad you would apply for (save the image as <code>job-ad.png</code> and display it here with an <code>&lt;img&gt;</code> tag).</div>
-
- <h2 class="sec">2. CV and cover letter (English), tailored to the ad</h2>
- <div class="card">
-  <p>My apprenticeship at Schneider Electric is listed as my current professional experience. Both CVs tell the same story as my LinkedIn profile and my pitch.</p>
-  <div class="actions" style="margin-top:16px">
-   <a class="btn cv" href="CV_Gautier_Bareille_EN.pdf" download>Download CV (EN)</a>
-   <a class="btn cv" href="CV_Gautier_Bareille_FR.pdf" download>Download CV (FR)</a>
-   <a class="btn" href="Cover_Letter_Gautier_Bareille_EN.pdf" download>Download cover letter (EN)</a>
-  </div>
- </div>
-
- <h2 class="sec">3. LinkedIn profile</h2>
- <div class="card">
-  <p>Up to date, with my apprenticeship at Schneider Electric as my current position.</p>
-  <div class="actions" style="margin-top:16px"><a class="btn li" href="https://www.linkedin.com/in/gautier-bareille-073538402/" target="_blank" rel="noopener noreferrer">Open my LinkedIn profile</a></div>
- </div>
-
- <h2 class="sec">4. My Job Glasses interviews</h2>
- <div class="grid">
-  <article class="card"><h3>Interview 1</h3>
-   <dl class="star"><dt>Who</dt><dd>Name, job title, company</dd><dt>Why</dt><dd>Why I chose this person</dd><dt>Learnt</dt><dd>Two or three key takeaways</dd></dl></article>
-  <article class="card"><h3>Interview 2</h3>
-   <dl class="star"><dt>Who</dt><dd>Name, job title, company</dd><dt>Why</dt><dd>Why I chose this person</dd><dt>Learnt</dt><dd>Two or three key takeaways</dd></dl></article>
- </div>
- <p class="lead" style="margin-top:8px">Both interviews must be held outside my family, my tutor and my team.</p>
-
- <h2 class="sec">5. Elevator pitch (3 minutes, in English)</h2>
- <div class="video">Video to add here: present, very brief past, future, plus my three mobility projects.<br>Replace this box with a &lt;video controls src="pitch.mp4"&gt; tag or a YouTube embed.</div>
-</section>
-
-<!-- MOBILITY -->
-<section id="mobility" class="panel">
- <h2>Mobility</h2>
- <p class="lead">Three international projects for the 17-week mobility in S9, with the reasons for each and how they fit with Schneider Electric.</p>
- <div class="stack">
-  <article class="card"><h3>Project 1</h3>
-   <dl class="star"><dt>Destination</dt><dd>Country, city, entity</dd><dt>Reasons</dt><dd>What I want to learn there and why</dd><dt>Feasibility</dt><dd>How it fits with Schneider Electric (site, team, timing)</dd></dl></article>
-  <article class="card"><h3>Project 2</h3>
-   <dl class="star"><dt>Destination</dt><dd>Country, city, entity</dd><dt>Reasons</dt><dd>What I want to learn there and why</dd><dt>Feasibility</dt><dd>How it fits with Schneider Electric (site, team, timing)</dd></dl></article>
-  <article class="card"><h3>Project 3</h3>
-   <dl class="star"><dt>Destination</dt><dd>Country, city, entity</dd><dt>Reasons</dt><dd>What I want to learn there and why</dd><dt>Feasibility</dt><dd>How it fits with Schneider Electric (site, team, timing)</dd></dl></article>
- </div>
-</section>
-
-<!-- PASSIONS -->
-<section id="passions" class="panel">
- <h2>Passions</h2>
- <p class="lead">What I do outside of work, and what it teaches me.</p>
- <div class="stack">
-  <article class="card">
-   <div class="row"><h3>Competitive rugby</h3><span class="date">10+ years</span></div>
-   <p>I have played in competitive leagues since the age of 8, with selections in regional and departmental youth teams. Rugby taught me team solidarity, resilience when tired, and personal accountability on the field. These are the habits I rely on in a project team.</p>
-  </article>
-  <article class="card">
-   <h3>Formula 1, cycling and pétanque</h3>
-   <p style="margin-top:6px">I follow Formula 1 for its race strategy, aerodynamics and telemetry analysis, and I ride on the road regularly. I also compete in pétanque, which demands calm and precise execution under pressure.</p>
-  </article>
- </div>
-</section>
-
-<!-- CIVIC -->
-<section id="civic" class="panel">
- <h2>Civic Engagement</h2>
- <p class="lead">40 hours of civic engagement (RSE) are required in S9. Hours completed or planned appear here.</p>
- <div class="card">
-  <p><b style="color:var(--text)">Planned or completed:</b></p>
-  <ul><li>Association or action, role, number of hours, dates (to complete)</li></ul>
- </div>
-</section>
-
-</main>
-
-<footer>
- <p>© 2026 Gautier Bareille, Toulouse INP-ENSEEIHT (3EA) and Schneider Electric</p>
- <p style="margin-top:6px"><a href="mailto:gautier.bareille@icloud.com">gautier.bareille@icloud.com</a><a href="https://www.linkedin.com/in/gautier-bareille-073538402/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-</footer>
-
-<script>
-const ids=['welcome','projects','career','mobility','passions','civic'];
-const list=document.getElementById('menuList'),mbtn=document.getElementById('menuBtn');
-function show(id,push){
-  if(!ids.includes(id))id='welcome';
-  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.id===id));
-  document.querySelectorAll('.tab,.menu li button').forEach(b=>b.classList.toggle('on',b.dataset.go===id));
-  list.classList.remove('open');mbtn.setAttribute('aria-expanded','false');
-  if(push)history.pushState(null,'','#'+id);
-  window.scrollTo(0,0);
-}
-document.querySelectorAll('[data-go]').forEach(el=>{
-  el.addEventListener('click',e=>{e.preventDefault();show(el.dataset.go,true)});
-  if(el.tagName==='A')el.addEventListener('keydown',e=>{if(e.key==='Enter')show(el.dataset.go,true)});
-});
-mbtn.addEventListener('click',e=>{e.stopPropagation();const o=list.classList.toggle('open');mbtn.setAttribute('aria-expanded',o)});
-document.addEventListener('click',()=>list.classList.remove('open'));
-window.addEventListener('popstate',()=>show(location.hash.slice(1),false));
+const themeBtn=document.getElementById('themeBtn');
+function label(){themeBtn.setAttribute('aria-label',document.documentElement.dataset.theme==='dark'?'Switch to light mode':'Switch to dark mode')}
+themeBtn.addEventListener('click',()=>{const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}label()});
+label();
 show(location.hash.slice(1),false);
 </script>
 </body>
