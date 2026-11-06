@@ -78,7 +78,7 @@ h2.sec{font-size:1.2rem;margin:30px 0 12px}
 .back{display:inline-block;margin-bottom:18px;background:none;border:0;color:var(--muted);font:600 .85rem inherit;font-family:inherit;cursor:pointer}
 footer{border-top:1px solid var(--border);background:var(--surface);padding:30px 24px;text-align:center;color:var(--muted);font-size:.85rem}
 footer a{color:var(--green);font-weight:600;text-decoration:none;margin:0 8px}
-.c-sch{--c:#00b33c}.c-cge{--c:#d97706}.c-cfa{--c:#64748b}
+.c-sch{--c:#00b33c}.c-cge{--c:#d97706}.c-cfa{--c:#64748b}.c-edf{--c:#0a66c2}
 .card[class*="c-"]{border-left:4px solid var(--c)}
 .legend{display:flex;gap:20px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);margin:-12px 0 18px}
 .key{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c)}
@@ -99,7 +99,19 @@ footer a{color:var(--green);font-weight:600;text-decoration:none;margin:0 8px}
 .c-air{--c:#1e3a8a}.c-tc{--c:#78716c}
 .exp .small{font-size:.82rem;margin-top:10px;color:var(--warn)}
 .flag{width:30px;height:20px;border-radius:3px;border:1px solid var(--border);vertical-align:-4px;margin-right:10px}
-@media(max-width:780px){.exp{grid-template-columns:1fr}}
+.job h4{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text);margin:18px 0 4px}
+.job .ref{font:500 .78rem 'JetBrains Mono',monospace;color:var(--muted);margin-top:2px}
+.match{display:grid;grid-template-columns:1fr 1.6fr;gap:8px 18px;margin-top:8px;font-size:.9rem}
+.match dt{font-weight:700;color:var(--text)}
+.match dd{color:var(--muted)}
+.letter{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--green-l);border-radius:14px;padding:32px 36px}
+.letter .l-name{font-size:1.25rem;font-weight:800;color:var(--green);letter-spacing:-.01em}
+.letter .l-meta{color:var(--muted);font-size:.85rem}
+.letter .l-to{margin:20px 0 4px;font-weight:700}
+.letter .l-subj{margin:16px 0;font-weight:700;padding:10px 14px;background:var(--green-bg);border-radius:8px;font-size:.92rem}
+.letter p.l-p{color:var(--text);font-size:.94rem;margin-bottom:12px;max-width:72ch}
+.letter .l-sign{margin-top:18px;font-weight:700}
+@media(max-width:780px){.exp{grid-template-columns:1fr}.match{grid-template-columns:1fr;gap:2px}.match dd{margin-bottom:8px}.letter{padding:22px 20px}}
 @media(max-width:780px){.tabs{display:none}.menu{display:block}.hero-top{flex-direction:column-reverse;align-items:flex-start}.grid{grid-template-columns:1fr}h1{font-size:2.1rem}.hero{padding:24px}.star{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:no-preference){.panel.on{animation:in .25s ease-out}@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}}
 </style>
@@ -226,7 +238,7 @@ footer a{color:var(--green);font-weight:600;text-decoration:none;margin:0 8px}
  <div class="actions">
   <a class="btn cv" href="CV_Gautier_BAREILLE_EN.pdf" target="_blank" rel="noopener">View CV (EN)</a>
   <a class="btn cv" href="CV_Gautier_BAREILLE_FR.pdf" target="_blank" rel="noopener">View CV (FR)</a>
-  <a class="btn" href="Cover_Letter_Gautier_Bareille_EN.pdf" target="_blank" rel="noopener">View cover letter (EN)</a>
+  <a class="btn" href="Cover_Letter_Gautier_BAREILLE_EN.pdf" target="_blank" rel="noopener">View cover letter (EN)</a>
   <a class="btn li" href="https://www.linkedin.com/in/gautier-bareille-073538402/" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>
  </div>
  <p style="font-size:.88rem;color:var(--muted);margin-top:12px">Both CVs list my apprenticeship at Schneider Electric as my current position.</p>
@@ -269,7 +281,57 @@ footer a{color:var(--green);font-weight:600;text-decoration:none;margin:0 8px}
  </div>
 
  <h2 class="sec">Target job ad</h2>
- <div class="todo"><b>To complete:</b> add the link or a screenshot of the real job ad you would apply for (save the image as <code>job-ad.png</code> and display it here with an <code>&lt;img&gt;</code> tag).</div>
+ <article class="card c-edf job">
+  <div class="row"><h3>Apprentice in electrotechnics / industrial engineering</h3><span class="date">3-year apprenticeship</span></div>
+  <p class="sub">EDF Hydrostadium, Toulouse</p>
+  <p class="ref">Ref. 2026-163825 &nbsp;|&nbsp; Published 12 June 2026 &nbsp;|&nbsp; Start planned Sept / Oct 2026</p>
+  <h4>The role</h4>
+  <p>A three-year apprenticeship within an engineering degree specialised in electrotechnics (Bac+3 entry level), in the Toulouse agency of EDF Hydrostadium, an engineering team dedicated to hydroelectric power and the water sector.</p>
+  <h4>Main missions</h4>
+  <ul>
+   <li>Prepare expertise files with the experts and write calculation notes on alternator and excitation rebuilds.</li>
+   <li>Study an independent excitation solution to cope with equipment failures (excitation cabinet to build).</li>
+   <li>Carry out jobs on alternators and electrotechnics (excitation, power electricity): specifications, company consultation, ordering and follow-up.</li>
+   <li>Prospect new customers and answer calls for tenders.</li>
+   <li>In the end, run expertise jobs and projects independently.</li>
+  </ul>
+  <h4>Profile sought</h4>
+  <p>Engineering student on a 3-year cycle specialised in electrotechnics, with good interpersonal skills, team spirit, initiative, technical curiosity, rigour and adaptability.</p>
+  <h4>Why it fits my profile</h4>
+  <dl class="match">
+   <dt>Electrotechnics degree</dt><dd>3EA apprenticeship at ENSEEIHT (electronics, electrical energy, automation), after a BTS Électrotechnique.</dd>
+   <dt>Calculation notes</dt><dd>Sizing note for a 400 V three-phase supply: voltage drop, thermal stress, short-circuit current, selectivity.</dd>
+   <dt>Specifications and consultation</dt><dd>At Schneider Electric: analysing customer specifications and consulting factories for HV substation offers.</dd>
+   <dt>Tenders and customers</dt><dd>Preparing technical and commercial offers in response to customer requests.</dd>
+   <dt>Team spirit and rigour</dt><dd>NCO training in the French Air and Space Force and weekly volunteer rugby coaching.</dd>
+  </dl>
+  <div class="tags"><span class="tag">Electrotechnics</span><span class="tag">Alternators</span><span class="tag">Excitation systems</span><span class="tag">Hydropower</span></div>
+  <div class="actions" style="margin-top:18px">
+   <a class="btn cv" href="https://www.ziprecruiter.fr/jobs/543067388-offre-d-alternance-apprenti-electrotechnique-genie-industriel-a-toulouse-f-h-2026-163825-a-edf" target="_blank" rel="noopener noreferrer">View the original job ad</a>
+   <a class="btn" href="Cover_Letter_Gautier_BAREILLE_EN.pdf" target="_blank" rel="noopener">Cover letter (PDF)</a>
+  </div>
+ </article>
+
+ <h2 class="sec">Cover letter</h2>
+ <article class="letter">
+  <p class="l-name">Gautier Bareille</p>
+  <p class="l-meta">Apprentice engineer, Toulouse INP-ENSEEIHT (3EA)<br>Toulouse &nbsp;|&nbsp; <a href="mailto:gautier.bareille@icloud.com">gautier.bareille@icloud.com</a> &nbsp;|&nbsp; <a href="https://www.linkedin.com/in/gautier-bareille-073538402/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+  <p class="l-to">EDF Hydrostadium</p>
+  <p class="l-meta">Toulouse agency, recruitment team<br>Toulouse, November 2026</p>
+  <p class="l-subj">Subject: Apprenticeship application, electrotechnics / industrial engineering (ref. 2026-163825)</p>
+  <p class="l-p">Dear Hiring Team,</p>
+  <p class="l-p">I am applying for the three-year apprenticeship in electrotechnics at EDF Hydrostadium in Toulouse (ref. 2026-163825). As an apprentice engineer on the 3EA track (Electronics, Electrical Energy and Automation) at Toulouse INP-ENSEEIHT, I want to build real expertise in electrical power, and your work on alternators and excitation systems is exactly that.</p>
+  <p class="l-p">My path has been built around electrical power. I started with a BTS in Electrotechnics at the CFAI de Beauzelle, then spent two years as an apprentice electrician at Cegelec Défense. There I wrote the calculation note for a 400 V three-phase supply (voltage drop, thermal stress, short-circuit current, selectivity) and took part in the electrical refurbishment of two work rooms, from study to commissioning. I am used to going from a calculation to a working installation, which is what your calculation notes and small repair jobs on alternators require.</p>
+  <p class="l-p">Since September 2026, I have also been an apprentice in the high-voltage substation team at Schneider Electric. I analyse customer specifications, consult our factories and prepare technical and commercial offers. This taught me to write clear scope documents, to consult suppliers and to answer a tender, which matches your missions: drafting specifications, consulting companies, ordering and following up jobs, and responding to calls for tenders.</p>
+  <p class="l-p">Before that, my NCO training in the French Air and Space Force gave me discipline and a sense of team, and I coach an under-10 rugby team every week, which taught me to explain things simply and to stay patient. These are the relational qualities and team spirit you ask for.</p>
+  <p class="l-p">I know I would start from the basics of alternator expertise and excitation systems, and I am keen to learn from your experts, with the aim of running expertise jobs and projects on my own by the end of the three years. I am available for the next start date and would be glad to discuss my application with you.</p>
+  <p class="l-p" style="margin-top:16px">Yours sincerely,</p>
+  <p class="l-sign">Gautier Bareille</p>
+  <div class="actions" style="margin-top:20px">
+   <a class="btn cv" href="Cover_Letter_Gautier_BAREILLE_EN.pdf" target="_blank" rel="noopener">Open as PDF</a>
+   <a class="btn" href="https://www.ziprecruiter.fr/jobs/543067388-offre-d-alternance-apprenti-electrotechnique-genie-industriel-a-toulouse-f-h-2026-163825-a-edf" target="_blank" rel="noopener noreferrer">View the job ad</a>
+  </div>
+ </article>
 
  <h2 class="sec">My Job Glasses interviews</h2>
  <div class="grid">
